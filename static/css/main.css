@@ -35,7 +35,7 @@ canvas {
 
 a:link,
 a:visited {
-    color: #00F;
+    color: #000;
     text-decoration: none;
 }
 
@@ -72,6 +72,12 @@ blockquote {
     margin-block-start: 22px;
     margin-block-end: 22px;
 }
+
+
+
+
+
+
 
 /* ids */
 
@@ -192,6 +198,66 @@ blockquote {
     background-color: #000;
     z-index: +1;
 }
+
+/* dial */
+
+:root {     /* unused for now */
+  --inc: 8;
+  --deg-inc: calc(360/var(--inc));
+}
+
+#menu {
+    position: relative;
+    width: 100vw;
+    height: 100vw;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: #FFC; */
+}
+
+#menu .nav-level li {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+}
+
+#menu .nav-level li:nth-of-type(1) {
+    transform: translate(50vw);
+}
+
+#menu .nav-level li:nth-of-type(2) {
+    transform: rotate(45deg) translate(50vw) rotate(-45deg);
+}
+
+#menu .nav-level li:nth-of-type(3) {
+    transform: rotate(90deg) translate(50vw) rotate(-90deg);
+}
+
+#menu .nav-level li:nth-of-type(4) {
+    transform: rotate(135deg) translate(50vw) rotate(-135deg);
+}
+
+#menu .nav-level li:nth-of-type(5) {
+    transform: rotate(180deg) translate(50vw) rotate(-180deg);
+}
+
+#menu .nav-level li:nth-of-type(6) {
+    transform: rotate(225deg) translate(50vw) rotate(-225deg);
+}
+
+#menu .nav-level li:nth-of-type(7) {
+    transform: rotate(270deg) translate(50vw) rotate(-270deg);
+}
+
+#menu .nav-level li:nth-of-type(8) {
+    transform: rotate(315deg) translate(50vw) rotate(-315deg);
+}
+
 
 /* classes */
 
