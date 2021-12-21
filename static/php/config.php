@@ -4,6 +4,6 @@
 */
 
 $head = 'OCT0';
-$site = '';
-$home = $head . ", " . $site;
+$site = '1234567';
+$home = $head . $site;
 ?>
