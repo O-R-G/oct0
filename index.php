@@ -8,6 +8,6 @@ else if ($uri[1] == 'read')
     require_once("views/read.php");
 else 
     require_once("views/main.php");
-require_once("views/badge.php");
+// require_once("views/badge.php");
 require_once("views/foot.php");
 ?>

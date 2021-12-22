@@ -12,6 +12,7 @@ $body = preg_replace($find, $replace, $body);
 <section id="main">
 	<div id="breadcrumbs">
 		<ul class="nav-level">
+            <!--
 			<li><?
 				if(!$uu->id) {
                     echo $home . '<a href="/about">&thinsp;</a>';
@@ -19,6 +20,7 @@ $body = preg_replace($find, $replace, $body);
 				    ?><a href="/<?= $a_url; ?>"><?= $head; ?></a><?
 				}
 			?></li>
+            -->
 			<ul class="nav-level">
 				<span><? echo $name; ?></span>
 			</ul>

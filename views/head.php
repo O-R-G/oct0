@@ -40,50 +40,65 @@ if($uu->id) {
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
 	<body><?
-	    if(!$uu->id) {
-    	    ?><header id="menu" class="hidden homepage"><?
-	    }
-	    else if($show_menu) {
-    	    ?><header id="menu" class="visible"><?
-	    }
-	    else {
-    	    ?><header id="menu" class="hidden"><?
-	    }
-	    ?><ul>
-		    <li><?
-			    if($uu->id) {
-				    ?><a href="<? echo $host; ?>"><?= $head; ?></a><?
-			    }
-			    else { 
-                    echo $head; 
-                }
-		    ?></li>
-		    <ul class="nav-level"><?
-	    $prevd = $nav[0]['depth'];
-	    foreach($nav as $n) {
-		    $d = $n['depth'];
-		    if($d > $prevd) {
-    		    ?><ul class="nav-level"><?
-		    }
-		    else {
-			    for($i = 0; $i < $prevd - $d; $i++) { 
-                    ?></ul><? 
-                }
-		    }
-		    ?><li><?
-			    if($n['o']['id'] != $uu->id) {
-    			    ?><a href="<? echo $host.$n['url']; ?>"><?
-				    echo $n['o']['name1'];
-                    if ($n['o']['deck'] && !ctype_space($n['o']['deck']))
-    				    echo $n['o']['deck'];
-	    		    ?></a><?
-			    }
-			    else {
-    			    ?><span><?= $n['o']['name1']; ?></span><?
-			    }
-		    ?></li><?
-		    $prevd = $d;
-	    }
-	    ?></ul>
-	    </ul>
-    </header>
+    ?>
+<style>
+
+body {
+    font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif;
+    font-size: 21px;
+    line-height: 24px;
+}
+
+#badge {
+    display: none;
+}
+
+:root {
+  --octo-box-size: min(100vw, 100vh);
+}
+
+#menu {
+    height: 100vh;
+    position: relative;
+}
+
+.octo-box {
+    padding: 0px;
+    display: block;
+    height: var(--octo-box-size);
+    width: var(--octo-box-size);
+    /* background-color: #FF0; */
+}
+
+.octo-arm {
+    transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+</style>
+<div id="menu" class="hidden">
+  <ul class="centre octo-box absolute" style="--octo-box-size:min(95vh,95vw)">
+    <li class="centre absolute octo-arm" style="--r:0deg"><a href='0'>*</a></li>
+    <li class="centre absolute octo-arm" style="--r:45deg"><a href='1'>1</a></li>
+    <li class="centre absolute octo-arm" style="--r:90deg"><a href='2'>2</a></li>
+    <li class="centre absolute octo-arm" style="--r:135deg"><a href='3'>3</a></li>
+    <li class="centre absolute octo-arm" style="--r:180deg"><a href='4'>4</a></li>
+    <li class="centre absolute octo-arm" style="--r:225deg"><a href='5'>5</a></li>
+    <li class="centre absolute octo-arm" style="--r:270deg"><a href='6'>6</a></li>
+    <li class="centre absolute octo-arm" style="--r:315deg"><a href='7'>7</a></li>
+  </ul>
+</div>
+<div id="oct01234567" class="centre fixed hidden">
+    <a href='#menu' onclick='hide_show_menu();'>OCT01234567</a>
+</div>
+<div id="oct0" class="centre fixed">
+    <a href='#menu' onclick='hide_show_menu();'>OCT0</a>
+</div>
+
