@@ -28,6 +28,8 @@ if($uu->id) {
     if ($uri[1])  
         $uu->id = -1; 
 
+$animationType = isset($_GET['animationType']) ? $_GET['animationType'] : 0;
+
 ?><!DOCTYPE html>
 <html>
 	<head>
@@ -36,7 +38,7 @@ if($uu->id) {
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="/static/css/main.css">
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
-		<link rel="stylesheet" href="/static/css/mtdbt2f4d-8.css">
+		<link rel="stylesheet" href="/static/css/mtdbt2f4d.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
 	<body><?
@@ -71,6 +73,7 @@ body {
 }
 
 .octo-arm {
+    font-size: 48px;
     transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));
 }
 
@@ -101,4 +104,31 @@ body {
 <div id="oct0" class="centre fixed">
     <a href='#menu' onclick='hide_show_menu();'>OCT0</a>
 </div>
-
+<script>
+    var animationType = <?= $animationType; ?>;
+    console.log(animationType);
+    var sOcto_arm = document.getElementsByClassName('octo-arm');
+    if(sOcto_arm)
+    {
+        if(animationType == 1)
+        {
+            [].forEach.call(sOcto_arm, function(el, i){
+                let duration = 5 * Math.random() + 0.5;
+                duration = Math.round(duration * 100) / 100;
+                console.log(duration);
+                el.style.animationDuration = duration + 's';
+            });
+        }
+        else if(animationType == 2)
+        {
+            console.log('hihi');
+            [].forEach.call(sOcto_arm, function(el, i){
+                let delay = 0.5 * parseInt(8 * Math.random()) / 8;
+                delay = Math.round(delay * 100) / 100;
+                console.log(delay);
+                el.style.delay = '-' + delay + 's';
+            });
+        }
+        
+    }
+</script>
