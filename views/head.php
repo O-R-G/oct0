@@ -40,6 +40,7 @@ $animationType = isset($_GET['animationType']) ? $_GET['animationType'] : 0;
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="stylesheet" href="/static/css/mtdbt2f4d.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
+        <script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
 	<body><?
     ?>
@@ -126,30 +127,43 @@ body {
     <a href='#menu' onclick='hide_show_menu();'>OCT01234567</a>
 </div>
 <div id="oct0" class="centre fixed">
-    <a href='#menu' onclick='hide_show_menu();'>OCT0</a>
+    <a href='#menu' onclick='hide_show_menu();'>OCT0<span id="logo-numeral">1234567</span></a>
 </div>
 <script>
     var animationType = <?= $animationType; ?>;
     var sOcto_arm = document.getElementsByClassName('octo-arm');
     var octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
+    var arms_loop = [];
     if(sOcto_arm)
     {
         if(animationType == 0)
         {
             [].forEach.call(sOcto_arm, function(el, i){
-                let interval = 0.15 * Math.random() + 0.1;
-                interval = Math.round(interval * 1000);
-                let idx = 0;
-                console.log(octo_box_size);
-                console.log(i * 45 - 90);
                 el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(calc(' + parseInt(0.95 * octo_box_size / 2 * 10)/10  + 'px)) rotate(-'+ (i * 45 + 270) +'deg)';
-                setInterval(function(){
-                    if( parseInt(idx / 7) % 2 == 0)
-                        el.style.fontFamily = 'mtdbt2f4d-'+(idx % 7)+', Helvetica, Arial, sans-serif'; 
-                    else
-                        el.style.fontFamily = 'mtdbt2f4d-'+(7 - idx % 7)+', Helvetica, Arial, sans-serif'; 
-                    idx++;
-                }, interval);
+                arms_loop[i] = new Loop(el, true);
+            });
+            let sOct0 = document.getElementById('oct0');
+            sOct0.addEventListener('click', function(){
+                if(arms_loop.length != 0 && arms_loop[1].looper != null)
+                {
+                    arms_loop.forEach(function(el, i){
+                        el.pause();
+                    });
+                }
+                else
+                {
+                    arms_loop.forEach(function(el, i){
+                        el.begin();
+                    });
+                }
+            });
+            window.addEventListener('resize', function(){
+                octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
+                [].forEach.call(sOcto_arm, function(el, i){
+                    el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(calc(' + parseInt(0.95 * octo_box_size / 2 * 10)/10  + 'px)) rotate(-'+ (i * 45 + 270) +'deg)';
+                    arms_loop[i] = new Loop(el, true);
+                });
+
             });
         }
         else if(animationType == 2)

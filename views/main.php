@@ -22,7 +22,7 @@ $body = preg_replace($find, $replace, $body);
 			?></li>
             -->
 			<ul class="nav-level">
-				<span><? echo $name; ?></span>
+				<span id="main-title"><? echo $name; ?></span>
 			</ul>
 		</ul>
 	</div>
@@ -59,4 +59,14 @@ $body = preg_replace($find, $replace, $body);
     		}, false);
         }
 	}
+	var sMain_title = document.getElementById('main-title');
+	let main_title_loop = new Loop(sMain_title);
+	main_title_loop.begin();
+	// setInterval(function(){
+ //        if( parseInt(idx / 7) % 2 == 0)
+ //            sMain_title.style.fontFamily = 'mtdbt2f4d-'+(idx % 7)+', Helvetica, Arial, sans-serif'; 
+ //        else
+ //            sMain_title.style.fontFamily = 'mtdbt2f4d-'+(7 - idx % 7)+', Helvetica, Arial, sans-serif'; 
+ //        idx++;
+ //    }, 150);
 </script>

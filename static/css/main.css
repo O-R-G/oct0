@@ -311,7 +311,7 @@ blockquote {
     /*-webkit-animation: looping_font .5s alternate infinite;*/
     /*animation: looping_font .5s alternate infinite;*/
 }
-@keyframes looping_font {
+/*@keyframes looping_font {
     0% {
         font-family: mtdbt2f4d-0, Helvetica, Arial, sans-serif;
     }
@@ -336,7 +336,7 @@ blockquote {
     100% {
         font-family: mtdbt2f4d-7, Helvetica, Arial, sans-serif;
     }
-}
+}*/
 /* vertical iPad / horizontal iPhone */
 @media screen and (max-width: 768px) {
     #columns .break {
