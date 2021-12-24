@@ -73,8 +73,31 @@ body {
 }
 
 .octo-arm {
-    font-size: 48px;
-    transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));
+    /*transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));*/
+}
+.octo-arm:first-child {
+    transform:rotate(0deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(0deg);
+}
+.octo-arm:nth-child(2) {
+    transform:rotate(45deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-45deg);
+}
+.octo-arm:nth-child(3) {
+    transform:rotate(90deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-90deg);
+}
+.octo-arm:nth-child(4) {
+    transform:rotate(135deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-135deg);
+}
+.octo-arm:nth-child(5) {
+    transform:rotate(180deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-180deg);
+}
+.octo-arm:nth-child(6) {
+    transform:rotate(225deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-225deg);
+}
+.octo-arm:nth-child(7) {
+    transform:rotate(270deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-270deg);
+}
+.octo-arm:nth-child(8) {
+    transform:rotate(315deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-315deg);
 }
 
 .absolute {
@@ -106,26 +129,29 @@ body {
 </div>
 <script>
     var animationType = <?= $animationType; ?>;
-    console.log(animationType);
     var sOcto_arm = document.getElementsByClassName('octo-arm');
     if(sOcto_arm)
     {
-        if(animationType == 1)
+        if(animationType == 0)
         {
             [].forEach.call(sOcto_arm, function(el, i){
-                let duration = 5 * Math.random() + 0.5;
-                duration = Math.round(duration * 100) / 100;
-                console.log(duration);
-                el.style.animationDuration = duration + 's';
+                let interval = 0.15 * Math.random() + 0.1;
+                interval = Math.round(interval * 1000);
+                let idx = 0;
+                setInterval(function(){
+                    if( parseInt(idx / 7) % 2 == 0)
+                        el.style.fontFamily = 'mtdbt2f4d-'+(idx % 7)+', Helvetica, Arial, sans-serif'; 
+                    else
+                        el.style.fontFamily = 'mtdbt2f4d-'+(7 - idx % 7)+', Helvetica, Arial, sans-serif'; 
+                    idx++;
+                }, interval);
             });
         }
         else if(animationType == 2)
         {
-            console.log('hihi');
             [].forEach.call(sOcto_arm, function(el, i){
                 let delay = 0.5 * parseInt(8 * Math.random()) / 8;
                 delay = Math.round(delay * 100) / 100;
-                console.log(delay);
                 el.style.delay = '-' + delay + 's';
             });
         }

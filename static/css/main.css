@@ -306,11 +306,11 @@ blockquote {
 .pdf #notes {
     padding-bottom: 22px;
 }
-.octo-arm
+.octo-arm a
 {
-    animation: looping_font .5s alternate infinite;
+    /*-webkit-animation: looping_font .5s alternate infinite;*/
+    /*animation: looping_font .5s alternate infinite;*/
 }
-
 @keyframes looping_font {
     0% {
         font-family: mtdbt2f4d-0, Helvetica, Arial, sans-serif;
@@ -337,7 +337,6 @@ blockquote {
         font-family: mtdbt2f4d-7, Helvetica, Arial, sans-serif;
     }
 }
-
 /* vertical iPad / horizontal iPhone */
 @media screen and (max-width: 768px) {
     #columns .break {
