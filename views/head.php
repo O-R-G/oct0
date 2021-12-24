@@ -73,6 +73,7 @@ body {
 }
 
 .octo-arm {
+    margin-top: -12px;
     /*transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));*/
 }
 .octo-arm:first-child {
@@ -130,6 +131,7 @@ body {
 <script>
     var animationType = <?= $animationType; ?>;
     var sOcto_arm = document.getElementsByClassName('octo-arm');
+    var octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
     if(sOcto_arm)
     {
         if(animationType == 0)
@@ -138,6 +140,8 @@ body {
                 let interval = 0.15 * Math.random() + 0.1;
                 interval = Math.round(interval * 1000);
                 let idx = 0;
+                console.log(octo_box_size);
+                el.style.transform = 'rotate(' + i * 45 + 'deg) translate(calc(' + parseInt(0.95 * octo_box_size / 2 * 10)/10  + 'px - 50%)) rotate(-'+ i * 45 +'deg)';
                 setInterval(function(){
                     if( parseInt(idx / 7) % 2 == 0)
                         el.style.fontFamily = 'mtdbt2f4d-'+(idx % 7)+', Helvetica, Arial, sans-serif'; 
