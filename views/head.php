@@ -76,7 +76,7 @@ body {
     margin-top: -12px;
     /*transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));*/
 }
-.octo-arm:first-child {
+/*.octo-arm:first-child {
     transform:rotate(0deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(0deg);
 }
 .octo-arm:nth-child(2) {
@@ -99,7 +99,7 @@ body {
 }
 .octo-arm:nth-child(8) {
     transform:rotate(315deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-315deg);
-}
+}*/
 
 .absolute {
     position: absolute;
@@ -141,7 +141,8 @@ body {
                 interval = Math.round(interval * 1000);
                 let idx = 0;
                 console.log(octo_box_size);
-                el.style.transform = 'rotate(' + i * 45 + 'deg) translate(calc(' + parseInt(0.95 * octo_box_size / 2 * 10)/10  + 'px - 50%)) rotate(-'+ i * 45 +'deg)';
+                console.log(i * 45 - 90);
+                el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(calc(' + parseInt(0.95 * octo_box_size / 2 * 10)/10  + 'px)) rotate(-'+ (i * 45 + 270) +'deg)';
                 setInterval(function(){
                     if( parseInt(idx / 7) % 2 == 0)
                         el.style.fontFamily = 'mtdbt2f4d-'+(idx % 7)+', Helvetica, Arial, sans-serif'; 
