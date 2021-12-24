@@ -111,15 +111,15 @@ body {
 
 </style>
 <div id="menu" class="hidden">
-  <ul class="centre octo-box absolute" style="--octo-box-size:min(95vh,95vw)">
-    <li class="centre absolute octo-arm" style="--r:0deg"><a href='0'>*</a></li>
-    <li class="centre absolute octo-arm" style="--r:45deg"><a href='1'>1</a></li>
-    <li class="centre absolute octo-arm" style="--r:90deg"><a href='2'>2</a></li>
-    <li class="centre absolute octo-arm" style="--r:135deg"><a href='3'>3</a></li>
-    <li class="centre absolute octo-arm" style="--r:180deg"><a href='4'>4</a></li>
-    <li class="centre absolute octo-arm" style="--r:225deg"><a href='5'>5</a></li>
-    <li class="centre absolute octo-arm" style="--r:270deg"><a href='6'>6</a></li>
-    <li class="centre absolute octo-arm" style="--r:315deg"><a href='7'>7</a></li>
+  <ul class="centre octo-box fixed" style="--octo-box-size:min(95vh,95vw)">
+    <li class="centre fixed octo-arm" style="--r:0deg"><a href='0'>*</a></li>
+    <li class="centre fixed octo-arm" style="--r:45deg"><a href='1'>1</a></li>
+    <li class="centre fixed octo-arm" style="--r:90deg"><a href='2'>2</a></li>
+    <li class="centre fixed octo-arm" style="--r:135deg"><a href='3'>3</a></li>
+    <li class="centre fixed octo-arm" style="--r:180deg"><a href='4'>4</a></li>
+    <li class="centre fixed octo-arm" style="--r:225deg"><a href='5'>5</a></li>
+    <li class="centre fixed octo-arm" style="--r:270deg"><a href='6'>6</a></li>
+    <li class="centre fixed octo-arm" style="--r:315deg"><a href='7'>7</a></li>
   </ul>
 </div>
 <div id="oct01234567" class="centre fixed hidden">
