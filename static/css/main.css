@@ -303,13 +303,17 @@ blockquote {
     columns: 100px 6;
 }
 
+
 .pdf #notes {
     padding-bottom: 22px;
 }
 .octo-arm a
 {
-    /*-webkit-animation: looping_font .5s alternate infinite;*/
-    /*animation: looping_font .5s alternate infinite;*/
+    display: inline-block;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 11px;
+    padding-bottom: 3px;
 }
 /*@keyframes looping_font {
     0% {

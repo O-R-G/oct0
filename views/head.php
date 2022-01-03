@@ -70,11 +70,18 @@ body {
     display: block;
     height: var(--octo-box-size);
     width: var(--octo-box-size);
+    max-width: 700px;
+    max-height: 700px;
     /* background-color: #FF0; */
 }
 
 .octo-arm {
-    margin-top: -12px;
+    text-align: center;
+    font-size: 2em;
+    margin-top: -20px;
+    margin-left: -20px;
+    border: 1px solid #00f;
+    border-radius: 50%;
     /*transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));*/
 }
 /*.octo-arm:first-child {
@@ -138,8 +145,9 @@ body {
     {
         if(animationType == 0)
         {
+            let arm_length = Math.min(parseInt(0.95 * octo_box_size / 2 * 10)/10, 700 / 2);
             [].forEach.call(sOcto_arm, function(el, i){
-                el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(calc(' + parseInt(0.95 * octo_box_size / 2 * 10)/10  + 'px)) rotate(-'+ (i * 45 + 270) +'deg)';
+                el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate('+arm_length+'px) rotate(-'+ (i * 45 + 270) +'deg)';
                 arms_loop[i] = new Loop(el, true);
             });
             let sOct0 = document.getElementById('oct0');
@@ -159,8 +167,9 @@ body {
             });
             window.addEventListener('resize', function(){
                 octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
+                let arm_length = Math.min(parseInt(0.95 * octo_box_size / 2 * 10)/10, 700 / 2);
                 [].forEach.call(sOcto_arm, function(el, i){
-                    el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(calc(' + parseInt(0.95 * octo_box_size / 2 * 10)/10  + 'px)) rotate(-'+ (i * 45 + 270) +'deg)';
+                    el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(' + arm_length  + 'px) rotate(-'+ (i * 45 + 270) +'deg)';
                     arms_loop[i] = new Loop(el, true);
                 });
 
