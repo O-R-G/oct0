@@ -29,6 +29,7 @@ if($uu->id) {
         $uu->id = -1; 
 
 $animationType = isset($_GET['animationType']) ? $_GET['animationType'] : 0;
+$color = isset($_GET['color']) ? $_GET['color'] : 'black';
 
 ?><!DOCTYPE html>
 <html>
@@ -42,7 +43,7 @@ $animationType = isset($_GET['animationType']) ? $_GET['animationType'] : 0;
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
         <script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
-	<body><?
+	<body class="<?= $color; ?>"><?
     ?>
 <style>
 
@@ -50,6 +51,15 @@ body {
     font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif;
     font-size: 21px;
     line-height: 24px;
+}
+body.blue
+{
+    color: #00f;
+}
+body.blue a:link,
+body.blue a:visited
+{
+    color: #000;
 }
 
 #badge {
@@ -64,7 +74,11 @@ body {
     height: 100vh;
     position: relative;
 }
-
+#main-title
+{
+    font-size: 2em;
+    border-radius: 50%;
+}
 .octo-box {
     padding: 0px;
     display: block;
@@ -78,11 +92,22 @@ body {
 .octo-arm {
     text-align: center;
     font-size: 2em;
-    margin-top: -20px;
-    margin-left: -20px;
-    border: 1px solid #00f;
+    /*margin-top: -20px;*/
+    /*margin-left: -20px;*/
+}
+.octo-arm a
+{
+    border: 1px solid;
     border-radius: 50%;
-    /*transform:rotate(var(--r)) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(calc(var(--r)*-1));*/
+}
+.octo-arm a,
+#main-title
+{
+    display: inline-block;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 11px;
+    padding-bottom: 3px;
 }
 /*.octo-arm:first-child {
     transform:rotate(0deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(0deg);
@@ -138,15 +163,15 @@ body {
 </div>
 <script>
     var animationType = <?= $animationType; ?>;
-    var sOcto_arm = document.getElementsByClassName('octo-arm');
+    var sOcto_arm_a = document.querySelectorAll('.octo-arm a');
     var octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
     var arms_loop = [];
-    if(sOcto_arm)
+    if(sOcto_arm_a.length != 0)
     {
         if(animationType == 0)
         {
             let arm_length = Math.min(parseInt(0.95 * octo_box_size / 2 * 10)/10, 700 / 2);
-            [].forEach.call(sOcto_arm, function(el, i){
+            [].forEach.call(sOcto_arm_a, function(el, i){
                 el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate('+arm_length+'px) rotate(-'+ (i * 45 + 270) +'deg)';
                 arms_loop[i] = new Loop(el, true);
             });
@@ -168,7 +193,7 @@ body {
             window.addEventListener('resize', function(){
                 octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
                 let arm_length = Math.min(parseInt(0.95 * octo_box_size / 2 * 10)/10, 700 / 2);
-                [].forEach.call(sOcto_arm, function(el, i){
+                [].forEach.call(sOcto_arm_a, function(el, i){
                     el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(' + arm_length  + 'px) rotate(-'+ (i * 45 + 270) +'deg)';
                     arms_loop[i] = new Loop(el, true);
                 });
@@ -177,7 +202,7 @@ body {
         }
         else if(animationType == 2)
         {
-            [].forEach.call(sOcto_arm, function(el, i){
+            [].forEach.call(sOcto_arm_a, function(el, i){
                 let delay = 0.5 * parseInt(8 * Math.random()) / 8;
                 delay = Math.round(delay * 100) / 100;
                 el.style.delay = '-' + delay + 's';
