@@ -121,7 +121,10 @@ blockquote {
     column-gap: 44px;
     padding: 1em;
 }
-
+#columns.one-column
+{
+    column-count: 1;
+}
 /* use margin instead of <br> */
 #columns div {
     margin-bottom: 22px;

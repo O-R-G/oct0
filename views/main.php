@@ -30,7 +30,7 @@ $body = preg_replace($find, $replace, $body);
 		</ul>
 	</div>
     <div id='content'>
-        <div id='columns'><?
+        <div id='columns <?= $uri[1] == '6' ? 'one-column' : ''; ?>'><?
             echo $body;
             if ($date) {
                 ?><div id='notes' class='mono'><?

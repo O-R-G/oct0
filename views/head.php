@@ -49,6 +49,7 @@ $color = isset($_GET['color']) ? $_GET['color'] : 'black';
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="stylesheet" href="/static/css/mtdbt2f4d.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
+        <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
         <script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
 	<body class="<?= $color; ?>"><?
