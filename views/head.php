@@ -26,18 +26,13 @@ if($uu->id) {
 		$show_menu = true;
 } else  
     if ($uri[1])  
-        $uu->id = -1; 
+        $uu->id = -1;
 
 $arms = $oo->children(0);
-foreach($arms as $key => $arm)
-{
+foreach($arms as $key => $arm) {
     if(substr($arm['name1'], 0, 1) == '.')
         unset($arms[$key]);
 }
-$arms = array_values($arms);
-
-$animationType = isset($_GET['animationType']) ? $_GET['animationType'] : 0;
-$color = isset($_GET['color']) ? $_GET['color'] : 'black';
 
 ?><!DOCTYPE html>
 <html>
@@ -52,185 +47,163 @@ $color = isset($_GET['color']) ? $_GET['color'] : 'black';
         <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
         <script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
-	<body class="<?= $color; ?>"><?
-    ?>
-<style>
-
-body {
-    font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif;
-    font-size: 21px;
-    line-height: 24px;
-}
-body.blue
-{
-    color: #00f;
-}
-body.blue a:link,
-body.blue a:visited
-{
-    color: #000;
-}
-
-#badge {
-    display: none;
-}
-
-:root {
-  --octo-box-size: min(100vw, 100vh);
-}
-
-#menu {
-    height: 100vh;
-    position: relative;
-}
-#main-title
-{
-    font-size: 2em;
-    border-radius: 50%;
-}
-.octo-box {
-    padding: 0px;
-    display: block;
-    height: var(--octo-box-size);
-    width: var(--octo-box-size);
-    max-width: 700px;
-    max-height: 700px;
-    /* background-color: #FF0; */
-}
-
-.octo-arm {
-    text-align: center;
-    font-size: 2em;
-    /*margin-top: -20px;*/
-    /*margin-left: -20px;*/
-}
-.octo-arm a
-{
-    border: 1px solid;
-    border-radius: 50%;
-}
-.octo-arm a,
-#main-title
-{
-    display: inline-block;
-    padding-left: 9px;
-    padding-right: 9px;
-    padding-top: 11px;
-    padding-bottom: 3px;
-}
-/*.octo-arm:first-child {
-    transform:rotate(0deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(0deg);
-}
-.octo-arm:nth-child(2) {
-    transform:rotate(45deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-45deg);
-}
-.octo-arm:nth-child(3) {
-    transform:rotate(90deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-90deg);
-}
-.octo-arm:nth-child(4) {
-    transform:rotate(135deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-135deg);
-}
-.octo-arm:nth-child(5) {
-    transform:rotate(180deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-180deg);
-}
-.octo-arm:nth-child(6) {
-    transform:rotate(225deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-225deg);
-}
-.octo-arm:nth-child(7) {
-    transform:rotate(270deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-270deg);
-}
-.octo-arm:nth-child(8) {
-    transform:rotate(315deg) translate(calc(var(--octo-box-size) * .95 / 2)) rotate(-315deg);
-}*/
-
-.absolute {
-    position: absolute;
-}
-
-.fixed {
-    position: fixed;
-}
-
-</style>
-<div id="menu" class="hidden">
-  <ul class="centre octo-box fixed" style="--octo-box-size:min(95vh,95vw)">
-    <?
-        foreach($arms as $key => $arm)
-        {
-            if($key == 0)
-            {
-                ?><li class="centre fixed octo-arm" style=""><a href='/<?= $arm['url']; ?>'>0</a></li><?
-            }
-            else
-            {
-                ?><li class="centre fixed octo-arm" style=""><a href='/<?= $arm['url']; ?>'><?= $arm['name1']; ?></a></li><?
-            }
-            
+	<body class='blue'>
+    <style>
+        body {
+            font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif;
+            font-size: 21px;
+            line-height: 24px;
         }
-    ?>
-    
-    <!-- <li class="centre fixed octo-arm" style="--r:45deg"><a href='1'>1</a></li>
-    <li class="centre fixed octo-arm" style="--r:90deg"><a href='2'>2</a></li>
-    <li class="centre fixed octo-arm" style="--r:135deg"><a href='3'>3</a></li>
-    <li class="centre fixed octo-arm" style="--r:180deg"><a href='4'>4</a></li>
-    <li class="centre fixed octo-arm" style="--r:225deg"><a href='5'>5</a></li>
-    <li class="centre fixed octo-arm" style="--r:270deg"><a href='6'>6</a></li>
-    <li class="centre fixed octo-arm" style="--r:315deg"><a href='7'>7</a></li> -->
-  </ul>
-</div>
-<div id="oct01234567" class="centre fixed hidden">
-    <a href='#menu' onclick='hide_show_menu();'>OCT01234567</a>
-</div>
-<div id="oct0" class="centre fixed">
-    <a href='#menu' onclick='hide_show_menu();'>OCT0<span id="logo-numeral">1234567</span></a>
-</div>
-<script>
-    var animationType = <?= $animationType; ?>;
-    var sOcto_arm_a = document.querySelectorAll('.octo-arm a');
-    var octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
-    var arms_loop = [];
-    if(sOcto_arm_a.length != 0)
-    {
-        if(animationType == 0)
-        {
-            let arm_length = Math.min(parseInt(0.95 * octo_box_size / 2 * 10)/10, 700 / 2);
-            [].forEach.call(sOcto_arm_a, function(el, i){
-                el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate('+arm_length+'px) rotate(-'+ (i * 45 + 270) +'deg)';
-                arms_loop[i] = new Loop(el, true);
-            });
-            let sOct0 = document.getElementById('oct0');
-            sOct0.addEventListener('click', function(){
-                if(arms_loop.length != 0 && arms_loop[1].looper != null)
-                {
-                    arms_loop.forEach(function(el, i){
-                        el.pause();
-                    });
-                }
-                else
-                {
-                    arms_loop.forEach(function(el, i){
-                        el.begin();
-                    });
-                }
-            });
-            window.addEventListener('resize', function(){
-                octo_box_size = 0.95 * Math.min( window.innerHeight, window.innerWidth );
-                let arm_length = Math.min(parseInt(0.95 * octo_box_size / 2 * 10)/10, 700 / 2);
-                [].forEach.call(sOcto_arm_a, function(el, i){
-                    el.style.transform = 'rotate(' + (i * 45 + 270) + 'deg) translate(' + arm_length  + 'px) rotate(-'+ (i * 45 + 270) +'deg)';
-                    arms_loop[i] = new Loop(el, true);
+
+        body.blue {
+            color: #00f;
+        }
+
+        body.blue a:link,
+        body.blue a:visited {
+            color: #000;
+        }
+
+        #badge {
+            display: none;
+        }
+
+        :root {
+          --octo-box-size: min(min(100vw, 100vh), 700px);
+        }
+
+        #menu {
+            height: 100vh;
+            position: relative;
+        }
+
+        #oct0 {
+            font-size: 1.75em;
+            /*
+            border: 1px solid;
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            */
+            padding: 20px;
+        }
+
+        #main-title {
+            font-size: 1.75em;
+            border-radius: 50%;
+        }
+
+        .octo-box {
+            display: inline-block;
+            padding: 0px;
+            height: var(--octo-box-size);
+            width: var(--octo-box-size);
+            max-width: 700px;
+            max-height: 700px;
+        }
+
+        .octo-arm {
+            display: inline-block;
+            top: 50%;
+            left: 50%;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            /* border: 1px solid #00F; */
+            /* background-color: #CCC; */
+            /* background-color: #00F; */
+        }
+
+        .octo-arm a,
+        #main-title {
+            padding: 20px;
+        }
+
+        .octo-arm-number {
+            font-size: 1.75em;
+        }
+
+        .octo-arm-name {
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .fixed {
+            position: fixed;
+        }
+
+        .octo-arm:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(0deg) translate(calc(var(--octo-box-size)/2));
+        }
+
+        .octo-arm:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(45deg) translate(calc(var(--octo-box-size)/2));
+        }
+
+        .octo-arm:nth-child(5) {
+            transform: translate(-50%, -50%) rotate(90deg) translate(calc(var(--octo-box-size)/2));
+        }
+
+        .octo-arm:nth-child(6) {
+            transform: translate(-50%, -50%) rotate(135deg) translate(calc(var(--octo-box-size)/2));
+        }
+
+        .octo-arm:nth-child(7) {
+            transform: translate(-50%, -50%) rotate(180deg) translate(calc(var(--octo-box-size)/2));
+        }
+
+        .octo-arm:nth-child(8) {
+            transform: translate(-50%, -50%) rotate(225deg) translate(calc(var(--octo-box-size)/2));
+        }
+
+        .octo-arm:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(270deg) translate(calc(var(--octo-box-size)/2));
+        }
+
+        .octo-arm:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(315deg) translate(calc(var(--octo-box-size)/2));
+        }
+    </style>
+    <div id="menu" class="hidden">
+        <div class="centre fixed octo-box"><?
+            foreach($arms as $key => $arm) {
+                if(empty($arm['rank']))
+                    $arm['rank'] = 0;
+                ?><div class="fixed octo-arm">
+                    <a href='/<?= $arm['url']; ?>'>
+                        <div class='octo-arm-number'><?= $arm['rank']; ?></div>
+                        <div class='octo-arm-name'><?= $arm['name1']; ?></div>
+                    </a>
+                </div><?
+            }          
+        ?></div>
+    </div>
+    <div id="oct01234567" class="centre fixed hidden">
+        <a href='#menu' onclick='hide_show_menu();'>OCT01234567</a>
+    </div>
+    <div id="oct0" class="centre fixed">
+        <a href='#menu' onclick='hide_show_menu();'>OCT0<span id="logo-numeral">1234567</span></a>
+    </div>
+    <script>
+        var arms_loop = [];
+        let octo_arm_a = document.querySelectorAll('.octo-arm a');
+        let sOct0 = document.getElementById('oct0');
+        [].forEach.call(octo_arm_a, function(el, i){
+            arms_loop[i] = new Loop(el, true);
+        });
+        sOct0.addEventListener('click', function(){
+            if(arms_loop.length != 0 && arms_loop[1].looper != null) {
+                arms_loop.forEach(function(el, i){
+                    el.pause();
                 });
-
-            });
-        }
-        else if(animationType == 2)
-        {
-            [].forEach.call(sOcto_arm_a, function(el, i){
-                let delay = 0.5 * parseInt(8 * Math.random()) / 8;
-                delay = Math.round(delay * 100) / 100;
-                el.style.delay = '-' + delay + 's';
-            });
-        }
-        
-    }
-</script>
+            } else {
+                arms_loop.forEach(function(el, i){
+                    el.begin();
+                });
+            }
+        });
+    </script>

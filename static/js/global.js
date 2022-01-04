@@ -35,6 +35,8 @@ function checkCookie(name) {
 	else
 		return false;
 }
+
+/*
 var isNight = false;
 // sunset sunrise
 fetch("https://api.sunrise-sunset.org/json?lat=43.300251&lng=5.385448&date=today")
@@ -73,3 +75,4 @@ fetch("https://api.sunrise-sunset.org/json?lat=43.300251&lng=5.385448&date=today
 .catch((error) => {
 	console.log(error);
 });
+*/

@@ -14,12 +14,12 @@ class Loop {
 			if( parseInt(self.idx / 8) % 2 == 0){
                 self.element.setAttribute('font', 'm-' + self.idx % 8);
                 // border width: 1 to 9
-                self.element.style.border = 1 + self.idx % 8 + 'px solid';
+                // self.element.style.border = 1 + self.idx % 8 + 'px solid';
                 // console.log('m-' + self.idx % 8, 1 + self.idx % 8 + 'px');
 			}
             else{
                 self.element.setAttribute('font', 'm-' + (8 - self.idx % 8));
-                self.element.style.border = 9 - self.idx % 8 + 'px solid';
+                // self.element.style.border = 9 - self.idx % 8 + 'px solid';
                 // console.log('m-' + (8 - self.idx % 8), 9 - self.idx % 8 + 'px');
             }
             self.idx++;

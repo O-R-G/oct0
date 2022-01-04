@@ -1,3 +1,4 @@
+<!--
 <script type="text/javascript" src="static/js/xeyes.js"></script>
 <canvas id="eyes"></canvas>
 <style>
@@ -9,3 +10,4 @@
         z-index: -1;
     }
 </style>
+-->

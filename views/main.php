@@ -8,7 +8,7 @@ $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
 
-?><div id='fullwindow'></div>
+?><!-- <div id='fullwindow'></div> -->
 <section id="main">
 	<div id="breadcrumbs">
 		<ul class="nav-level">
@@ -44,7 +44,7 @@ $body = preg_replace($find, $replace, $body);
         ?></div>
     </div>
 </section>
-
+<!--
 <script type="text/javascript" src="/static/js/screenfull.min.js"></script>	
 <script type="text/javascript" src="/static/js/windowfull.js"></script>	
 <script>
@@ -73,3 +73,4 @@ $body = preg_replace($find, $replace, $body);
  //        idx++;
  //    }, 150);
 </script>
+-->
