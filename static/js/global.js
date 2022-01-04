@@ -35,3 +35,41 @@ function checkCookie(name) {
 	else
 		return false;
 }
+var isNight = false;
+// sunset sunrise
+fetch("https://api.sunrise-sunset.org/json?lat=43.300251&lng=5.385448&date=today")
+.then(response =>  response.json())
+.then(function(data){
+	console.log(data);
+	let sunset_time = data.results.sunset;
+	let now = new Date();
+	now = now.toLocaleTimeString();
+	now = now.split(' ');
+	sunset_time = sunset_time.split(' ');
+	if(now[1] == 'PM')
+	{
+		now = now[0].split(':');
+		sunset_time = sunset_time[0].split(':');
+		if(parseInt(now[0]) > parseInt(sunset_time[0]))
+			isNight = true;
+		else if(
+			parseInt(now[0]) == parseInt(sunset_time[0]) && 
+			parseInt(now[1]) >= parseInt(sunset_time[1])
+		)
+			isNight = true;
+		else if(
+			parseInt(now[0]) == parseInt(sunset_time[0]) && 
+			parseInt(now[1]) == parseInt(sunset_time[1]) &&
+			parseInt(now[2]) >= parseInt(sunset_time[2])
+		)
+			isNight = true;
+	}
+	console.log(sunset_time);
+	console.log(now);
+	console.log(isNight);
+	if(isNight)
+		document.body.classList.add('night');
+})
+.catch((error) => {
+	console.log(error);
+});

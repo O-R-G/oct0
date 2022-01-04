@@ -24,7 +24,7 @@ var eyes = [
     'radius' : eyes_radius
   },
 ]
-
+var eyes_color = document.body.classList.contains('night') ? '#fff' : '#000'; 
 var pupil_ratio = 0.8;
 
 window.onload = function() {
@@ -33,7 +33,10 @@ window.onload = function() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   window.onmousemove = function(evt) { mx = evt.x; my = evt.y };
-  tekenFrame();
+  setTimeout(function(){
+    eyes_color = document.body.classList.contains('night') ? '#fff' : '#000'; 
+    tekenFrame();
+  }, 1000);
 }
 
 function tekenFrame() {
@@ -61,13 +64,14 @@ function drawEye(eye) {
   context.fillStyle = "transparent";
   context.fill();
   context.closePath();
+  context.strokeStyle = eyes_color;
   context.lineWidth = 2;
   context.stroke();
  
   // pupil
   context.beginPath();
   context.arc(eye.centerX + eye.pupilX, eye.centerY + eye.pupilY, eye.radius * pupil_ratio, 0, Math.PI * 2);
-  context.fillStyle = "#000";
+  context.fillStyle = eyes_color;
   context.fill();
   context.closePath();
 

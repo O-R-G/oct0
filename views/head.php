@@ -28,6 +28,14 @@ if($uu->id) {
     if ($uri[1])  
         $uu->id = -1; 
 
+$arms = $oo->children(0);
+foreach($arms as $key => $arm)
+{
+    if(substr($arm['name1'], 0, 1) == '.')
+        unset($arms[$key]);
+}
+$arms = array_values($arms);
+
 $animationType = isset($_GET['animationType']) ? $_GET['animationType'] : 0;
 $color = isset($_GET['color']) ? $_GET['color'] : 'black';
 
@@ -145,14 +153,28 @@ body.blue a:visited
 </style>
 <div id="menu" class="hidden">
   <ul class="centre octo-box fixed" style="--octo-box-size:min(95vh,95vw)">
-    <li class="centre fixed octo-arm" style="--r:0deg"><a href='0'>0</a></li>
-    <li class="centre fixed octo-arm" style="--r:45deg"><a href='1'>1</a></li>
+    <?
+        foreach($arms as $key => $arm)
+        {
+            if($key == 0)
+            {
+                ?><li class="centre fixed octo-arm" style=""><a href='/<?= $arm['url']; ?>'>0</a></li><?
+            }
+            else
+            {
+                ?><li class="centre fixed octo-arm" style=""><a href='/<?= $arm['url']; ?>'><?= $arm['name1']; ?></a></li><?
+            }
+            
+        }
+    ?>
+    
+    <!-- <li class="centre fixed octo-arm" style="--r:45deg"><a href='1'>1</a></li>
     <li class="centre fixed octo-arm" style="--r:90deg"><a href='2'>2</a></li>
     <li class="centre fixed octo-arm" style="--r:135deg"><a href='3'>3</a></li>
     <li class="centre fixed octo-arm" style="--r:180deg"><a href='4'>4</a></li>
     <li class="centre fixed octo-arm" style="--r:225deg"><a href='5'>5</a></li>
     <li class="centre fixed octo-arm" style="--r:270deg"><a href='6'>6</a></li>
-    <li class="centre fixed octo-arm" style="--r:315deg"><a href='7'>7</a></li>
+    <li class="centre fixed octo-arm" style="--r:315deg"><a href='7'>7</a></li> -->
   </ul>
 </div>
 <div id="oct01234567" class="centre fixed hidden">

@@ -18,7 +18,16 @@ body {
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-text-size-adjust: 100%;
 }
-
+body.night
+{
+    background-color: #000;
+    color: #fff;
+}
+body.night a:link,
+body.night a:visited
+{
+    color: #ff0;
+}
 p {
 	margin-bottom: 1em;
 }
