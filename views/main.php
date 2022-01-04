@@ -21,9 +21,12 @@ $body = preg_replace($find, $replace, $body);
 				}
 			?></li>
             -->
-			<ul class="nav-level">
-				<span id="main-title"><? echo $name; ?></span>
-			</ul>
+            <? if($uri[1]){
+            	?><ul class="nav-level">
+					<span id="main-title"><? echo $name; ?></span>
+				</ul><?
+            } ?>
+			
 		</ul>
 	</div>
     <div id='content'>

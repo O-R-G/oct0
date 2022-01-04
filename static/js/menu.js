@@ -4,7 +4,7 @@
 var menu = document.getElementById('menu');
 var main = document.getElementById('main');
 var logo_numeral = document.getElementById('logo-numeral');
-console.log(logo_numeral);
+// console.log(logo_numeral);
 // var oct01234567 = document.getElementById('oct01234567');
 // var oct0 = document.getElementById('oct0');
 // var badge = document.getElementById('badge');
