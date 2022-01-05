@@ -69,7 +69,7 @@ foreach($arms as $key => $arm) {
         }
 
         #oct0 {
-            font-size: 1.75em;
+            font-size: 2.0em;
             /*
             border: 1px solid;
             border-radius: 50%;
@@ -80,7 +80,7 @@ foreach($arms as $key => $arm) {
         }
 
         #main-title {
-            font-size: 1.75em;
+            font-size: 2.0em;
             border-radius: 50%;
         }
 
@@ -113,7 +113,7 @@ foreach($arms as $key => $arm) {
         }
 
         .octo-arm-number {
-            font-size: 1.75em;
+            font-size: 2.0em;
         }
 
         .octo-arm-name {
@@ -189,6 +189,10 @@ foreach($arms as $key => $arm) {
         #logo-numeral .blue {
             color: #000;
             border-bottom: 3px solid #000;
+        }
+
+        #menu .blue {
+            color: #000;
         }
     </style>
     <div id="menu" class="hidden">
