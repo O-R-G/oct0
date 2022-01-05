@@ -11,16 +11,23 @@ $notes = preg_replace($find, $replace, $notes);
 
 ?><section id="main">
     <div id='content'>
+    <div id='columns'>
         <div id='en'><?
             echo $body;
         ?></div>
         <div id='fr'><?
             echo $notes;
         ?></div>
-        <div id='go-back'><?
+    </div>
+        <div id='nav'><?
+            $next = ($uri[1] == 'about') ? 'contact' : 'about'; 
             if (!empty($item['url'])) {
-                ?><br><a href='/'>×</a>
-                <!--&nbsp;<a href='/contact'>→</a>--><?
+                ?><a href='/'>
+                    <img class='inline-svg' src='media/svg/x-12-k.svg'>
+                </a>
+                <a href='/<?= $next; ?>'>
+                    <img class='inline-svg' src='media/svg/arrow-right-12-k.svg'>
+                </a><?
             }
         ?></div>
     </div>

@@ -13,6 +13,6 @@ else if ($uri[1] == 'shop')
 else 
     require_once("views/main.php");
 require_once("views/subscribe.php");
-// require_once("views/badge.php");
+require_once("views/badge.php");
 require_once("views/foot.php");
 ?>

@@ -7,7 +7,8 @@ var context;
 var mx = 0;
 var my = 0;
 
-var eyes_center = [window.innerWidth / 2, 50];
+// var eyes_center = [window.innerWidth / 2, 50];
+var eyes_center = [40, window.innerHeight - 30];
 var eyes_radius = 10;
 var eyes_distance = 30;
 var eyes = [
@@ -36,7 +37,7 @@ window.onload = function() {
   setTimeout(function(){
     eyes_color = document.body.classList.contains('night') ? '#fff' : '#000'; 
     tekenFrame();
-  }, 1000);
+  }, 10);
 }
 
 function tekenFrame() {

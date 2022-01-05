@@ -113,12 +113,12 @@ blockquote {
 }
 
 #content {
-    padding: 1em;
+    padding: 1.0em;
 }
 
 #columns {
-    columns: 300px 3;
-    column-gap: 44px;
+    columns: 300px 2;
+    column-gap:60px;
     padding: 1em;
 }
 
@@ -140,10 +140,6 @@ blockquote {
 #en,
 #fr {
     display: inline-block;
-    width: 45%;
-    max-width: 500px;
-    margin-right: 40px;
-    vertical-align:top;
     /* background-color: #FF0; */
 }
 
@@ -215,6 +211,12 @@ blockquote {
     box-sizing: border-box;
     background-color: #000;
     z-index: +1;
+}
+
+#nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
 }
 
 /* classes */
@@ -331,7 +333,7 @@ blockquote {
     padding-bottom: 22px;
 }
 
-.arrow-inline {
+.inline-svg {
     height: 22px;
 	width: auto;
     padding: 0px;
@@ -429,4 +431,9 @@ blockquote {
         break-after: initial;
         margin-bottom: -22px;
     }
+    /*
+    .centre {
+        top: 1em;
+    }
+    */
 }
