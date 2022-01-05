@@ -140,8 +140,11 @@ blockquote {
 #en,
 #fr {
     display: inline-block;
-    /* width: 500px; */
-    background-color: #FF0;
+    width: 45%;
+    max-width: 500px;
+    margin-right: 40px;
+    vertical-align:top;
+    /* background-color: #FF0; */
 }
 
 #notes {
@@ -324,9 +327,14 @@ blockquote {
     columns: 100px 6;
 }
 
-
 .pdf #notes {
     padding-bottom: 22px;
+}
+
+.arrow-inline {
+    height: 22px;
+	width: auto;
+    padding: 0px;
 }
 
 *[font="m-0"]

@@ -13,8 +13,8 @@
 + straight line menu
 + change if empty rank to just see if url is current url
 + mirror logic updates to views/dial
-/ en fr, two columns views/main
-/ sign up ______ (on main page) (eyes?)
-/ xeyes
++ en fr, two columns views/main
++ sign up ______ (on main page) (eyes?) (add arrow)
+x xeyes
 - rotate each number on hover, or animate all ambient after delay
 x sunrise sunset

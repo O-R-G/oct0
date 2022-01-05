@@ -11,7 +11,6 @@ $notes = preg_replace($find, $replace, $notes);
 
 ?><section id="main">
     <div id='content'>
-    <div id='columns'>
         <div id='en'><?
             echo $body;
         ?></div>
@@ -21,9 +20,8 @@ $notes = preg_replace($find, $replace, $notes);
         <div id='go-back'><?
             if (!empty($item['url'])) {
                 ?><br><a href='/'>×</a>
-                &nbsp;<a href='/contact'>→</a><?
+                <!--&nbsp;<a href='/contact'>→</a>--><?
             }
         ?></div>
-    </div>
     </div>
 </section>
