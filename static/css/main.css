@@ -117,22 +117,31 @@ blockquote {
 }
 
 #columns {
-    columns: 400px 6;
+    columns: 300px 3;
     column-gap: 44px;
     padding: 1em;
 }
-#columns.one-column
-{
+
+#columns.one-column {
     column-count: 1;
-}
-/* use margin instead of <br> */
-#columns div {
-    margin-bottom: 22px;
 }
 
 #columns .break {
     break-after: column;
     margin-bottom: 0px;
+}
+
+/* use margin instead of <br> */
+#columns div,
+#content div {
+    margin-bottom: 22px;
+}
+
+#en,
+#fr {
+    display: inline-block;
+    /* width: 500px; */
+    background-color: #FF0;
 }
 
 #notes {

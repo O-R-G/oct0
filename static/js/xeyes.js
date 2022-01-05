@@ -7,9 +7,9 @@ var context;
 var mx = 0;
 var my = 0;
 
-var eyes_center = [window.innerWidth / 2, 60];
-var eyes_radius = 30;
-var eyes_distance = 100;
+var eyes_center = [window.innerWidth / 2, 50];
+var eyes_radius = 10;
+var eyes_distance = 30;
 var eyes = [
 
   {
@@ -25,7 +25,7 @@ var eyes = [
   },
 ]
 var eyes_color = document.body.classList.contains('night') ? '#fff' : '#000'; 
-var pupil_ratio = 0.8;
+var pupil_ratio = 0.5;
 
 window.onload = function() {
   canvas = document.getElementById('eyes');

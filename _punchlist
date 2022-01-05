@@ -10,9 +10,11 @@
 + black only
 + underscore
 + views/dial
-- straight line menu
-- en / fr, two columns
++ straight line menu
++ change if empty rank to just see if url is current url
++ mirror logic updates to views/dial
+/ en fr, two columns views/main
 - sign up ______ (on main page) (eyes?)
-- sunrise sunset
-- xeyes
-- support
+/ xeyes
+- rotate each number on hover, or animate all ambient after delay
+x sunrise sunset

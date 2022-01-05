@@ -7,74 +7,23 @@ $date = $item['begin'];
 $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
+$notes = preg_replace($find, $replace, $notes);
 
-?><!-- <div id='fullwindow'></div> -->
-<section id="main">
-    <!--
-	<div id="breadcrumbs">
-		<ul class="nav-level">
-			<li><?
-				if(!$uu->id) {
-                    echo $home . '<a href="/about">&thinsp;</a>';
-				} else {
-				    ?><a href="/<?= $a_url; ?>"><?= $head; ?></a><?
-				}
-			?></li><? 
-            if($uri[1]){
-            	?><ul class="nav-level">
-					<span id="main-title">1. <? echo $name; ?></span>
-				</ul><?
-            } ?>
-		</ul>
-	</div>
-    -->
+?><section id="main">
     <div id='content'>
-        <div id='columns <?= $uri[1] == '6' ? 'one-column' : ''; ?>'><?
+    <div id='columns'>
+        <div id='en'><?
             echo $body;
-            if ($date) {
-                ?><div id='notes' class='mono'><?
-                    echo date("F j, Y", strtotime($date));
-                    echo '<br/>';
-                    echo $deck;
-                    echo '<br/><br/>';
-                    echo $notes;
-                ?></div><?
+        ?></div>
+        <div id='fr'><?
+            echo $notes;
+        ?></div>
+        <div id='go-back'><?
+            if (!empty($item['url'])) {
+                ?><br><a href='/'>×</a>
+                &nbsp;<a href='/contact'>→</a><?
             }
-            ?><div id='go-back'><?
-                if (!empty($item['url'])) {
-                    ?><br><a href='/'>×</a><?
-                }
-            ?></div>
-        </div>
+        ?></div>
+    </div>
     </div>
 </section>
-<!--
-<script type="text/javascript" src="/static/js/screenfull.min.js"></script>	
-<script type="text/javascript" src="/static/js/windowfull.js"></script>	
-<script>
-    var imgs = document.querySelectorAll('img,video');
-	var i;
-	var index;
-	for (i = 0; i < imgs.length; i++) {
-		if (screenfull.isEnabled) {
-    		imgs[i].addEventListener('click', function () {
-                screenfull.toggle(this);
-    		}, false);
-		} else {
-    		imgs[i].addEventListener('click', function () {
-                windowfull.toggle(this);
-    		}, false);
-        }
-	}
-	var sMain_title = document.getElementById('main-title');
-	let main_title_loop = new Loop(sMain_title);
-	main_title_loop.begin();
-	// setInterval(function(){
- //        if( parseInt(idx / 7) % 2 == 0)
- //            sMain_title.style.fontFamily = 'mtdbt2f4d-'+(idx % 7)+', Helvetica, Arial, sans-serif'; 
- //        else
- //            sMain_title.style.fontFamily = 'mtdbt2f4d-'+(7 - idx % 7)+', Helvetica, Arial, sans-serif'; 
- //        idx++;
- //    }, 150);
-</script>
--->

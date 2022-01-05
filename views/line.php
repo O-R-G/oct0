@@ -128,13 +128,17 @@
 
     </style>
     <div id="oct0" class="centre fixed">
-        <a href='#' onclick='hide_show_menu();'>
-            OCT<span id="logo-numeral"><?
+        <div>
+            <a href='/about'>OCT</a><span id="logo-numeral"><?
+                $digit = 0;
                 foreach($arms as $arm) {
-                    if(empty($arm['rank'])) $arm['rank'] = 0;
-                    $class = (($arm['rank'] == $item['rank']) && (!empty($item['url']))) ? 'static' : 'active';
-                    ?><span class='<?= $class; ?>'><?= $arm['rank']; ?></span><?
+                    $class = ($uri[1] == $arm['url']) ? 'static' : 'active';
+                    if (!empty($arm['body']))
+                        echo "<a href='/" . $arm['url'] . "' class='$class'>$digit</a>";
+                    else 
+                        echo "<span class='$class'>$digit</span>";
+                    $digit++;
                 }
             ?></span><span id='logo-zero' class='hidden'>0</span>
-        </a>
+        </div>
     </div>

@@ -2,7 +2,8 @@
 $uri = explode('/', $_SERVER['REQUEST_URI']);
 
 require_once("views/head.php");
-require_once("views/dial.php");
+// require_once("views/dial.php");
+require_once("views/line.php");
 if ($uri[1] == 'print')
     require_once("views/print.php");
 else if ($uri[1] == 'read')
