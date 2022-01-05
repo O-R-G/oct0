@@ -10,26 +10,25 @@ $body = preg_replace($find, $replace, $body);
 
 ?><!-- <div id='fullwindow'></div> -->
 <section id="main">
+    <!--
 	<div id="breadcrumbs">
 		<ul class="nav-level">
-            <!--
 			<li><?
 				if(!$uu->id) {
                     echo $home . '<a href="/about">&thinsp;</a>';
 				} else {
 				    ?><a href="/<?= $a_url; ?>"><?= $head; ?></a><?
 				}
-			?></li>
-            -->
-            <? if($uri[1]){
+			?></li><? 
+            if($uri[1]){
             	?><ul class="nav-level">
-					<span id="main-title"><? echo $name; ?></span>
+					<span id="main-title">1. <? echo $name; ?></span>
 				</ul><?
             } ?>
-			
 		</ul>
 	</div>
-    <div id='content'>
+    -->
+    <div id='content' class='blue'>
         <div id='columns <?= $uri[1] == '6' ? 'one-column' : ''; ?>'><?
             echo $body;
             if ($date) {
@@ -41,7 +40,12 @@ $body = preg_replace($find, $replace, $body);
                     echo $notes;
                 ?></div><?
             }
-        ?></div>
+            ?><div id='go-back'><?
+                if (!empty($item['url'])) {
+                    ?><br><a href='/'>Go back</a><?
+                }
+            ?></div>
+        </div>
     </div>
 </section>
 <!--

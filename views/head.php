@@ -47,7 +47,7 @@ foreach($arms as $key => $arm) {
         <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
         <script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
-	<body class='blue'>
+	<body class='black'>
     <style>
         body {
             font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif;
@@ -55,21 +55,12 @@ foreach($arms as $key => $arm) {
             line-height: 24px;
         }
 
-        body.blue {
-            color: #00f;
-        }
-
-        body.blue a:link,
-        body.blue a:visited {
-            color: #000;
-        }
-
         #badge {
             display: none;
         }
 
         :root {
-          --octo-box-size: min(min(100vw, 100vh), 700px);
+            --octo-box-size: min(min(100vw, 100vh), 700px);
         }
 
         #menu {
@@ -113,7 +104,7 @@ foreach($arms as $key => $arm) {
             border-radius: 50%;
             /* border: 1px solid #00F; */
             /* background-color: #CCC; */
-            /* background-color: #00F; */
+            /* background-color: #FF0; */
         }
 
         .octo-arm a,
@@ -126,6 +117,7 @@ foreach($arms as $key => $arm) {
         }
 
         .octo-arm-name {
+            display: none;
         }
 
         .absolute {
@@ -137,56 +129,92 @@ foreach($arms as $key => $arm) {
         }
 
         .octo-arm:nth-child(3) {
-            transform: translate(-50%, -50%) rotate(0deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(0deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
         .octo-arm:nth-child(4) {
-            transform: translate(-50%, -50%) rotate(45deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(45deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
         .octo-arm:nth-child(5) {
-            transform: translate(-50%, -50%) rotate(90deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(90deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
         .octo-arm:nth-child(6) {
-            transform: translate(-50%, -50%) rotate(135deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(135deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
         .octo-arm:nth-child(7) {
-            transform: translate(-50%, -50%) rotate(180deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(180deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
         .octo-arm:nth-child(8) {
-            transform: translate(-50%, -50%) rotate(225deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(225deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
         .octo-arm:nth-child(1) {
-            transform: translate(-50%, -50%) rotate(270deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(270deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
         .octo-arm:nth-child(2) {
-            transform: translate(-50%, -50%) rotate(315deg) translate(calc(var(--octo-box-size)/2));
+            transform: translate(-50%, -50%) rotate(315deg) translate(calc(var(--octo-box-size)/2.5));
+        }
+
+        .black {
+            color: #000;
+        }
+
+        .black a:link,
+        .black a:visited {
+            color: #000;
+        }
+
+        .black a:hover {
+            /* color: #00F; */
+        }
+
+        .blue {
+            color: #00F;
+        }
+
+        .blue a:link,
+        .blue a:visited {
+            color: #000;
+        }
+
+        .blue a:hover {
+            /* color: #000; */
+        }
+
+        #logo-numeral .blue {
+            color: #000;
+            border-bottom: 3px solid #000;
         }
     </style>
     <div id="menu" class="hidden">
         <div class="centre fixed octo-box"><?
-            foreach($arms as $key => $arm) {
-                if(empty($arm['rank']))
-                    $arm['rank'] = 0;
-                ?><div class="fixed octo-arm">
+            foreach($arms as $arm) {
+                if(empty($arm['rank'])) $arm['rank'] = 0;
+                $class = ($arm['rank'] == $item['rank']) ? 'blue' : '';
+                ?><div class='fixed octo-arm'>
                     <a href='/<?= $arm['url']; ?>'>
-                        <div class='octo-arm-number'><?= $arm['rank']; ?></div>
-                        <div class='octo-arm-name'><?= $arm['name1']; ?></div>
+                        <div class='octo-arm-number <?= $class; ?>'><?= $arm['rank']; ?></div>
+                        <div class='octo-arm-name <?= $class; ?>'><?= $arm['name1']; ?></div>
                     </a>
                 </div><?
             }          
         ?></div>
     </div>
-    <div id="oct01234567" class="centre fixed hidden">
-        <a href='#menu' onclick='hide_show_menu();'>OCT01234567</a>
-    </div>
     <div id="oct0" class="centre fixed">
-        <a href='#menu' onclick='hide_show_menu();'>OCT0<span id="logo-numeral">1234567</span></a>
+        <a href='#' onclick='hide_show_menu();'>
+            OCT<span id="logo-numeral"><?
+                foreach($arms as $arm) {
+                    if(empty($arm['rank'])) $arm['rank'] = 0;
+                    $class = (($arm['rank'] == $item['rank']) && (!empty($item['url']))) ? 'blue' : '';
+                    ?><span class='<?= $class; ?>'><?= $arm['rank']; ?></span><?
+                }
+            ?></span><span id='logo-zero' class='hidden'>0</span>
+        </a>
     </div>
     <script>
         var arms_loop = [];
