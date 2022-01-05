@@ -42,7 +42,7 @@ $body = preg_replace($find, $replace, $body);
             }
             ?><div id='go-back'><?
                 if (!empty($item['url'])) {
-                    ?><br><a href='/'>Go back</a><?
+                    ?><br><a href='/'>×</a><?
                 }
             ?></div>
         </div>
