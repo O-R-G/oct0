@@ -143,6 +143,11 @@ blockquote {
     /* background-color: #FF0; */
 }
 
+#fr
+{
+    font-family: mtdbt2f4d-4, Helvetica, Arial, sans-serif;
+}
+
 #notes {
     border-top: 1px solid #000;
     margin-top: 33px;
@@ -390,6 +395,11 @@ blockquote {
 .octo-arm[font="m-8"]
 {
     font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif;
+}
+.accent
+{
+    font-size: 0.8em;
+    font-weight: 300;
 }
 /*@keyframes looping_font {
     0% {

@@ -141,6 +141,11 @@
         font-size: 18px !important;
         line-height: 22px !important;
       }
+
+      .sib-form .entry__error
+      {
+        display: none;
+      }
     </style>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
@@ -185,7 +190,7 @@
                 <div class="form__label-row form__label-row--horizontal">
 
                   <div class="entry__field">
-                    <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" data-required="true" required style="outline:none;" />
+                    <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" data-required="true" required style="outline:none;" placeholder="Join our mailinglist" />
                   </div>
                 </div>
 

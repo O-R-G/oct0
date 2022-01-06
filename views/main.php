@@ -9,6 +9,9 @@ $replace = '';
 $body = preg_replace($find, $replace, $body); 
 $notes = preg_replace($find, $replace, $notes);
 
+$body = wrap_accents($body);
+$notes = wrap_accents($notes);
+
 ?><section id="main">
     <div id='content'>
     <div id='columns'>
