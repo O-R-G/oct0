@@ -146,6 +146,18 @@
       {
         display: none;
       }
+      #mailinglist-submit
+      {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: transparent;
+        border: none;
+        width: 22px;
+        height: 22px;
+        background-image: url('media/svg/arrow-right-12-k.svg');
+        background-size: 100%;
+        cursor: pointer;
+      }
     </style>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
@@ -213,6 +225,7 @@
 
           <input type="text" name="email_address_check" value="" class="input--hidden">
           <input type="hidden" name="locale" value="fr">
+          <button id="mailinglist-submit"></button>
         </form>
       </div>
     </div>
