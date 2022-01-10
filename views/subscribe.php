@@ -2,12 +2,13 @@
     /*
         view for send in blue subscription widget
     */
-        $subscription_status = $_GET['subscription'] ? $_GET['subscription'] : '';
+        $subscription_status = isset($_GET['subscription']) ? $_GET['subscription'] : '';
     ?><style>
       .newsletter {
         position: fixed;
         bottom : 15px;
         left : 80px;
+        /*font-family: mtdbt2f4d-2, Helvetica, Arial, sans-serif;*/
       }
 
       .sib-form,
@@ -137,7 +138,7 @@
       .sib-form,
       .sib-form-block,
       .sib-form-block__button {
-        font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif !important;
+        font-family: mtdbt2f4d-2, Helvetica, Arial, sans-serif !important;
         font-size: 18px !important;
         line-height: 22px !important;
       }
