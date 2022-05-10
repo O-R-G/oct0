@@ -24,7 +24,7 @@
         }
 
         #oct0 {
-            font-size: 2.0em;
+            font-size: 4.0em;
             /*
             border: 1px solid;
             border-radius: 50%;
@@ -129,7 +129,11 @@
     </style>
     <div id="oct0" class="centre fixed">
         <div>
-            <a href='/about'>OCT</a><span id="logo-numeral"><?
+            <? if( $uri[1] ){
+                ?><a class="active" href='/'>OCT</a><?
+            } else {
+                ?><span class=''>OCT</span><?
+            } ?><span id="logo-numeral"><?
                 $digit = 0;
                 foreach($arms as $arm) {
                     $class = ($uri[1] == $arm['url']) ? 'static' : 'active';
