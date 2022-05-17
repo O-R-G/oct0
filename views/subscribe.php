@@ -5,9 +5,14 @@
         $subscription_status = isset($_GET['subscription']) ? $_GET['subscription'] : '';
     ?><style>
       .newsletter {
+        /* display: none; */
         position: fixed;
+        /* 
         bottom : 15px;
         left : 80px;
+        */
+        top: 1em;
+        left: 1em;
         /*font-family: mtdbt2f4d-2, Helvetica, Arial, sans-serif;*/
       }
 

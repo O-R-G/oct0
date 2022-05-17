@@ -2,6 +2,7 @@
 <canvas id="eyes"></canvas>
 <style>
     #eyes {
+        display: none;
         position: fixed;
         bottom: 0;
         left: 0;

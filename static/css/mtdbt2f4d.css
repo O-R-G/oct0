@@ -110,7 +110,7 @@
          url('../fonts/mtdbt2f4d-8/mtdbt2f4d-8.woff2') format('woff2'),
          url('../fonts/mtdbt2f4d-8/mtdbt2f4d-8.woff') format('woff'),
          url('../fonts/mtdbt2f4d-8/mtdbt2f4d-8.ttf') format('truetype'),
-         url('../fonts/mtdbt2f4d-8/mtdbt2f4d-8.svg#mtdbt2f4d-88') format('svg');
+         url('../fonts/mtdbt2f4d-8/mtdbt2f4d-8.svg#mtdbt2f4d-8') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -123,6 +123,18 @@
          url('../fonts/mtdbt2f4d-66/mtdbt2f4d-66-webfont.woff') format('woff'),
          url('../fonts/mtdbt2f4d-66/mtdbt2f4d-66-webfont.ttf') format('truetype'),
          url('../fonts/mtdbt2f4d-66/mtdbt2f4d-66-webfont.svg#mtdbt2f4d-66') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'mtdbt2f4d-88';
+    src: url('../fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.eot');
+    src: url('../fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.woff2') format('woff2'),
+         url('../fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.woff') format('woff'),
+         url('../fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.ttf') format('truetype'),
+         url('../fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.svg#mtdbt2f4d-88') format('svg');
     font-weight: normal;
     font-style: normal;
 }

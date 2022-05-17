@@ -5,7 +5,7 @@
 
     ?><style>
         body {
-            font-family: mtdbt2f4d-8, Helvetica, Arial, sans-serif;
+            font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif;
             font-size: 21px;
             line-height: 24px;
         }
@@ -24,7 +24,7 @@
         }
 
         #oct0 {
-            font-size: 4.0em;
+            font-size: 3.0em; 
             /*
             border: 1px solid;
             border-radius: 50%;
@@ -32,11 +32,16 @@
             height: 250px;
             */
             padding: 20px;
+            z-index: 1000;
         }
 
         #main-title {
             font-size: 2.0em;
             border-radius: 50%;
+        }
+
+        #logo-numeral a {
+            margin-left: 10px;
         }
 
         .octo-box {
@@ -114,18 +119,33 @@
             transform: translate(-50%, -50%) rotate(315deg) translate(calc(var(--octo-box-size)/2.5));
         }
 
-        .active a:hover {
+
+        /*
+        .active:hover {
             border-bottom: 3px solid #000;
         }
 
-        .static {
+        .active a:hover {
             border-bottom: 3px solid #000;
+        }
+        */
+
+        .static {
+            border-bottom: 4px solid #000;
         }
 
         .octo-arm .static {
             border-bottom: none;
         }
 
+
+        @media screen and (max-width: 768px) {
+    
+            #oct0 {
+                font-size: 2.0em;
+                background-color: #FFF;
+            }
+        }
     </style>
     <div id="oct0" class="centre fixed">
         <div>

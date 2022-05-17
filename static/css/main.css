@@ -451,6 +451,15 @@ blockquote {
         break-after: initial;
         margin-bottom: -22px;
     }
+    #en,
+    #fr {
+        width: auto;
+
+    }
+    #columns {
+        padding: 0.5em; 
+    }
+
     /*
     .centre {
         top: 1em;
