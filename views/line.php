@@ -131,7 +131,7 @@
         */
 
         .static {
-            border-bottom: 4px solid #000;
+            border-bottom: 6px solid #000;
         }
 
         .octo-arm .static {
@@ -143,7 +143,10 @@
     
             #oct0 {
                 font-size: 2.0em;
-                background-color: #FFF;
+            }
+
+            .static {
+                border-bottom: 4px solid #000;
             }
         }
     </style>

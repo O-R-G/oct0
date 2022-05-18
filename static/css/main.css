@@ -451,11 +451,17 @@ blockquote {
         break-after: initial;
         margin-bottom: -22px;
     }
+
     #en,
     #fr {
-        width: auto;
+        width: 100%;
 
     }
+
+    #fr {
+        padding: initial;
+    }
+
     #columns {
         padding: 0.5em; 
     }
