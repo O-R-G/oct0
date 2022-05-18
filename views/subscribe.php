@@ -6,14 +6,15 @@
     ?><style>
       .newsletter {
         /* display: none; */
-        position: fixed;
+        /* position: fixed; */
+	position: absolute;
         /* 
         bottom : 15px;
         left : 80px;
         */
-        top: 1em;
-        left: 1em;
-        /*font-family: mtdbt2f4d-2, Helvetica, Arial, sans-serif;*/
+        top: 2em;
+        left: 2em;
+        /* font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif; */
       }
 
       .sib-form,
@@ -143,8 +144,8 @@
       .sib-form,
       .sib-form-block,
       .sib-form-block__button {
-        font-family: mtdbt2f4d-2, Helvetica, Arial, sans-serif !important;
-        font-size: 18px !important;
+        font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif !important;
+	font-size: 18px !important;
         line-height: 22px !important;
       }
 
@@ -178,6 +179,20 @@
       {
         display: none;
       }
+
+	.english {
+		font-size: 21px;
+		line-spacing: 24px;
+	}
+
+
+	/* vertical iPhone */
+	@media screen and (max-width: 500px) {
+		.newsletter {
+	        	top: 1.5em;
+        		left: 1.5em;
+      	}
+
     </style>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
@@ -206,9 +221,10 @@
       </div>
     </div>
     <div></div>
-      <div class="newsletter-container">
-        <!--<div class="stayin">Subscribe</div>-->
 
+	<div class='english'>Join the mailing list, stay informed.<br><br></div>
+
+      <div class="newsletter-container">
         <div id="sib-container" class="sib-container--large sib-container--horizontal" style="text-align:left; background-color:transparent; max-width:540px; border-width:0px; border-color:#ffffff; border-style:solid;">
         <form id="sib-form" method="POST" action="https://495e63c0.sibforms.com/serve/MUIEAIvujuho9qdSwFgl5vlKCZEV4NfHnLNGIbYnztiO-uMQ5qKoLnDFdMhIEgcRwna7FauS_rkTB13vGIbIu0fZQqfCYxr2tHXuo3kBBJmxMh2hHJ7q5IziEBpsQgfZjnShytC74YIAgVNj2BjG5VIlxI3t-PWDjW_ylXYokAZEQGskc4g2XEUe70ZzSrrTLO3SiRO_oH1vf-vB" data-type="subscription">
           <div class="line-email">
@@ -217,7 +233,7 @@
                 <div class="form__label-row form__label-row--horizontal">
 
                   <div class="entry__field">
-                    <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" data-required="true" required style="outline:none;" placeholder="Join our mailinglist" />
+                    <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" data-required="true" required style="outline:none;" placeholder="" />
                   </div>
                 </div>
 

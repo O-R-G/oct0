@@ -38,6 +38,11 @@ img, video {
   	filter: grayscale(100%);
 }
 
+img:hover, 
+video:hover {
+  	filter: initial;
+}
+
 canvas {
     /* border: 5px solid red; */
 }
@@ -121,8 +126,8 @@ blockquote {
     column-gap:60px;
     padding: 1em;
 }
-#columns.columnsDisabled
-{
+
+#columns.columnsDisabled {
     columns: auto;
 }
 
@@ -139,6 +144,14 @@ blockquote {
 #columns div,
 #content div {
     margin-bottom: 22px;
+}
+
+#columns #en a {
+    border-bottom: 2px solid #000;
+}
+
+#columns #fr a {
+    border-bottom: 1px solid #000;
 }
 
 #en,
