@@ -66,7 +66,7 @@
 
       .sib-form .entry__field {
         border : 0px!important;
-        border-bottom : 1px solid black!important;
+        border-bottom : 2px solid black!important;
         border-radius: 0px!important;
       }
 
@@ -81,7 +81,7 @@
 
       .line-email {
         float : left;
-        min-width : 200px;
+        min-width : 300px;
       }
 
       .sib-form-block__button,
@@ -222,7 +222,7 @@
     </div>
     <div></div>
 
-	<div class='english'>Join the mailing list, stay informed.<br><br></div>
+	<div class='english'>Join the OCT0 mailing list:<br><br></div>
 
       <div class="newsletter-container">
         <div id="sib-container" class="sib-container--large sib-container--horizontal" style="text-align:left; background-color:transparent; max-width:540px; border-width:0px; border-color:#ffffff; border-style:solid;">
