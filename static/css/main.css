@@ -34,13 +34,13 @@ p {
 
 img, video {
 	width: 100%;
-	padding: 1em;
-  	filter: grayscale(100%);
+    /* padding: 1em; */
+  	/* filter: grayscale(100%); */
 }
 
 img:hover, 
 video:hover {
-  	filter: initial;
+  	/* filter: initial; */
 }
 
 canvas {
