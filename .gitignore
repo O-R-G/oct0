@@ -24,3 +24,6 @@ media/*.mov
 backup
 sync
 log
+
+# env
+.env

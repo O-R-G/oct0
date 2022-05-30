@@ -8,8 +8,8 @@ if ($uri[1] == 'print')
     require_once("views/print.php");
 else if ($uri[1] == 'read')
     require_once("views/read.php");
-else if ($uri[1] == 'sign-up')
-   require_once("views/subscribe.php");
+else if ($uri[1] == 'sign-up' && count($uri) == 2)
+    require_once("views/subscribe.php");
 // else if ($uri[1] == 'shop')
 //    require_once("views/shop.php");
 else 
