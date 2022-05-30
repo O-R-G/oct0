@@ -9,7 +9,7 @@ if ($uri[1] == 'print')
 else if ($uri[1] == 'read')
     require_once("views/read.php");
 else if ($uri[1] == 'sign-up')
-    require_once("views/subscribe.php");
+   require_once("views/subscribe.php");
 // else if ($uri[1] == 'shop')
 //    require_once("views/shop.php");
 else 
