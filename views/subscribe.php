@@ -120,7 +120,20 @@ else if( $_POST['action'] == 'sign-up' )
         $result = $result[array_key_first($result)];
         if(isset($result['id']))
         {
-            ?><script> window.location.href="/subscribe/success"; </script><?
+            $success_msg_pattern = '/\[success\]\((.*?)\)/';
+            preg_match($success_msg_pattern, $item['deck'], $temp);
+            if(!empty($temp)) $success_msg_fr = $temp[1];
+            preg_match($success_msg_pattern, $item['body'], $temp);
+            if(!empty($temp)) $success_msg_en = $temp[1];
+            ?>
+            <section id="main" >
+                <div id='content'>
+                    <div id="columns" class="columnsDisabled">
+                        <div id="en"><?= $success_msg_en; ?></div><div id="fr"><?= $success_msg_fr; ?></div>
+                    </div>
+                </div>
+            </section>
+            <?
         }
     } catch (Exception $e) {
         $error = (array) $e;
