@@ -308,7 +308,6 @@ function expandPaypal(buttonAreaId, currency, itemName, type = ''){
 		if(sViewing_paypal)
 			sViewing_paypal.classList.remove('viewing-paypal');
 		sButtonArea.classList.add('viewing-paypal');
-		// let thisPaypalButtonContainer = sButtonArea.querySelector('.paypal-button-container');
 	}
 	let hasButton = sButtonArea.querySelector('.paypal-buttons') !== null;
 	if(!hasButton){
