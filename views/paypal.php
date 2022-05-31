@@ -82,7 +82,8 @@ if( strpos(trim($item['deck']), '[paypal-disabled]') === false ) {
 	$this_page = 'issue';
 
 	$acceptedCurrencies = array('usd','gbp','eur');
-	$currency = isset($_GET['currency']) ? $_GET['currency'] : 'usd';
+	// $currency = isset($_GET['currency']) ? $_GET['currency'] : 'usd';
+	$currency = isset($_GET['currency']) ? $_GET['currency'] : 'eur';
 	if(!in_array($currency, $acceptedCurrencies)) $currency = 'usd';
 	$acceptedCurrenciesSymbols = array(
 		'usd' => '$',
@@ -281,8 +282,8 @@ if( strpos(trim($item['deck']), '[paypal-disabled]') === false ) {
 	}
 
 	.viewing-paypal .buy-button-container .button {
-	    background-color: #0E0;
-	    border-color: #0E0;
+	    background-color: #000;
+	    border-color: #000;
 	    position: relative;
             color: #FFF;
 	}
@@ -312,6 +313,7 @@ if( strpos(trim($item['deck']), '[paypal-disabled]') === false ) {
 	}
 
 	#currencySwitchWrapper {
+		display: none;
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
