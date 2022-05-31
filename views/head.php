@@ -23,7 +23,7 @@ $nav = $oo->nav($uu->ids);
 $show_menu = false;
 if($uu->id) {
 	$is_leaf = empty($oo->children_ids($uu->id));
-	$internal = (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
+	$internal = (isset($_SERVER['HTTP_REFERER']) && substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
 	if(!$is_leaf && $internal)
 		$show_menu = true;
 } else  
@@ -35,6 +35,10 @@ foreach($arms as $key => $arm) {
     if(substr($arm['name1'], 0, 1) == '.')
         unset($arms[$key]);
 }
+
+$isTestCart = isset($_GET['testCart']);
+if($isTestCart)
+	$bodyClass .= 'testCart ';
 
 ?><!DOCTYPE html>
 <html>
