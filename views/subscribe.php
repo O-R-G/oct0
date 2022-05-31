@@ -137,18 +137,5 @@ else if( $_POST['action'] == 'sign-up' )
         // $error = json_decode($error[array_key_first($error)], true);
         ?><script>window.location.href="/sign-up/error";</script><?
     }
-<<<<<<< HEAD
-    ?>
-    <section id="main" >
-        <div id='content'>
-            <div id="columns" class="columnsDisabled">
-                <div id="en"><?= $error_msg_en; ?></div><div id="fr"><?= $error_msg_fr; ?></div>
-            </div>
-        </div>
-    </section>
-    <?
-}
-=======
     
 }
->>>>>>> e08385e3446fedb0d5842e0d4863916ab72c04b2
