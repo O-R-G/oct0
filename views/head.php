@@ -5,7 +5,6 @@ require_once('open-records-generator/config/url.php');
 
 // site
 require_once('static/php/config.php');
-
 require_once('static/php/function.php');
 
 $db = db_connect("guest");
