@@ -428,6 +428,57 @@ blockquote {
     font-size: 0.8em;
     font-weight: 300;
 }
+
+.floatContainer:after
+{
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.button {
+    width: 100%;
+    height: 35px;
+    color: #FFF;
+    background-color: #0C0;
+    border: 1px solid #0C0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+}
+.button:hover
+{
+    background-color: #0E0;
+    border: 1px solid #0E0;
+}
+.button-area
+{
+    /*padding: 5px;*/
+    /*width: 200px;*/
+    box-sizing: content-box;
+}
+.button-area + .button-area
+{
+    /*margin-top: 11px;*/
+}
+#shopContainer a:link,
+#shopContainer a:visited
+{
+    color: #0B0;
+} 
+
+.flex-container:after
+{
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
 /*@keyframes looping_font {
     0% {
         font-family: mtdbt2f4d-0, Helvetica, Arial, sans-serif;
