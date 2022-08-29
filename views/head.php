@@ -39,13 +39,18 @@ $isTestCart = isset($_GET['testCart']);
 if($isTestCart)
 	$bodyClass .= 'testCart ';
 
+if($uri[1] == 'penumbra' && count($uri) == 2)
+	$card_image = "/media/00016.png";
+else
+	$card_image = "/media/jpg/og.jpg";
+
 ?><!DOCTYPE html>
 <html>
 	<head>
 		<title><? echo $site; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="og:image" content="/media/jpg/og.jpg" />
+		<meta name="og:image" content="<?= $card_image; ?>" />
 		<meta name="og:type" content="website" />
 		<meta name="og:title" content="OCT01234567" />
 		<meta name="og:url" content="https://www.octo.productions" />
@@ -54,13 +59,13 @@ if($isTestCart)
 		<meta name="twitter:title" content="OCT01234567" />
 		<meta name="twitter:site" content="https://www.octo.productions" />
 		<meta name="twitter:description" content="OCT0 is a non-profit production office based in Marseille, France operating internationally." />
-		<meta name="twitter:image" content="https://www.octo.productions/media/jpg/og.jpg" />
+		<meta name="twitter:image" content="https://www.octo.productions<?= $card_image; ?>" />
 		<link rel="stylesheet" href="/static/css/main.css">
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="stylesheet" href="/static/css/mtdbt2f4d.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
-        <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-        <script type='text/javascript' src='/static/js/loop.js'></script>
+	        <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+        	<script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
 	<body>
 

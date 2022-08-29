@@ -440,9 +440,9 @@ blockquote {
 .button {
     width: 100%;
     height: 35px;
-    color: #090;
+    color: #000;
     background-color: #FFF;
-    border: 1px solid #0C0;
+    border: 1px solid #000;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 18px;
@@ -452,12 +452,11 @@ blockquote {
 }
 
 .button:hover {
-    background-color: #0E0;
-    border: 1px solid #0E0;
+    background-color: #000;
+    border: 1px solid #000;
     color: #FFF;
 }
-.button-area
-{
+.button-area {
     /*padding: 5px;*/
     /*width: 200px;*/
     box-sizing: content-box;
