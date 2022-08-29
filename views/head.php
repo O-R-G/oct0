@@ -45,6 +45,16 @@ if($isTestCart)
 		<title><? echo $site; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="og:image" content="/media/jpg/og.jpg" />
+		<meta name="og:type" content="website" />
+		<meta name="og:title" content="OCT01234567" />
+		<meta name="og:url" content="https://www.octo.productions" />
+		<meta name="og:description" content="OCT0 is a non-profit production office based in Marseille, France operating internationally." />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="OCT01234567" />
+		<meta name="twitter:site" content="https://www.octo.productions" />
+		<meta name="twitter:description" content="OCT0 is a non-profit production office based in Marseille, France operating internationally." />
+		<meta name="twitter:image" content="https://www.octo.productions/media/jpg/og.jpg" />
 		<link rel="stylesheet" href="/static/css/main.css">
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="stylesheet" href="/static/css/mtdbt2f4d.css">
