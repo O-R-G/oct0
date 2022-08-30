@@ -40,7 +40,7 @@ if($isTestCart)
 	$bodyClass .= 'testCart ';
 
 if($uri[1] == 'penumbra' && count($uri) == 2)
-	$card_image = "/media/jpg/octo_penumbra_square_1.jpeg";
+	$card_image = "/media/jpg/octo_penumbra_square_1.jpg";
 else
 	$card_image = "/media/jpg/og.jpg";
 
