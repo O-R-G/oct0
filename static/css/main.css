@@ -117,7 +117,8 @@ blockquote {
 	padding-bottom: 0px;
 }
 
-#content {
+#content,
+.content-container {
     padding: 1.0em;
 }
 
@@ -471,14 +472,32 @@ blockquote {
     color: #0B0;
 } 
 
-.flex-container:after
+/* .flex-container
 {
-    content: "";
-    display: block;
-    height: 0;
-    clear: both;
+    display: flex;
+} */
+.product
+{
+    /* flex: 0 0 33%; */
+    width: 33.3%;
+    display: inline-block;
+    vertical-align: top;
+    /* margin-right: 20px; */
+    padding: 1em;
+    position: relative;
 }
-
+.product-thumbnail > img
+{
+    display: block;
+}
+.product-link
+{
+    display: block;
+}
+.product-name
+{
+    margin-bottom: 5px;
+}
 /*@keyframes looping_font {
     0% {
         font-family: mtdbt2f4d-0, Helvetica, Arial, sans-serif;

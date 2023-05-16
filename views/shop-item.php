@@ -1,10 +1,3 @@
-<style>
-	.product-container
-	{
-		width: 33%;
-		display: inline-block;
-	}
-</style>
 <?
 	$children = $oo->children($item['id']);
 	foreach($children as $key => $child)
@@ -21,3 +14,4 @@
 		</div><?
 	}
 ?>
+MAGASIN
