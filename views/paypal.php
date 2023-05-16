@@ -69,14 +69,14 @@ function printPayPalButtons($currency, $productInfo, $itemName){
 }
 ?>
 <script>
-	var isDonation = '<?= $this_page === 'donation'; ?>';
-	var currency = '<?= $currency; ?>';
-	// var acceptedCurrenciesSymbols = <?= json_encode($acceptedCurrenciesSymbols, true); ?>;
-	paypal_url += '&currency='+currency.toUpperCase();
-	if(!isDonation) {
+	var currency = <?= json_encode($currency, true); ?>;
+	console.log(currency);
+	paypal_url += '&currency='+currency['name'].toUpperCase();
+	// if(!isDonation) {
+		console.log(paypal_url);
 		var paypal_script = loadScript(paypal_url);
-	}
-	document.body.classList.add('viewing-'+currency);
+	// }
+	document.body.classList.add('viewing-'+currency['name']);
 
 </script>
 <style>

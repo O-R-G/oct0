@@ -332,6 +332,10 @@ function createButton(buttonContainerId, price, currency, itemName, type){
 		else if(itemName.indexOf('twelve years') !== -1)
 			var options = shippingOptions_arr[type + '-12'];
 	}
+	else if(type =='')
+	{	
+		options = shippingOptions_arr['issue'];
+	}
 	else
 		var options = shippingOptions_arr[type];	
 	var baseAmount = parseFloat(price, 10);

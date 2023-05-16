@@ -22,6 +22,10 @@ else if ($uri[1] == 'shop'){
     else
         require_once("views/main.php");  
 }
+else if($uri[1] == 'octopus-archive')
+{
+    require_once("views/octopus-archive.php");
+}
 else 
     require_once("views/main.php");
 

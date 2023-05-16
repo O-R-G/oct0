@@ -16,7 +16,6 @@ $currencies = array(
         'isDefault' => false
     )
 );
-// $acceptedCurrencies = array_keys($currencies);
 $defaultCurrency = array();
 foreach($currencies as $c)
 {
