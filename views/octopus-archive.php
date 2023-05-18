@@ -11,8 +11,6 @@ $body = preg_replace($find, $replace, $body);
 $body2 = preg_replace($find, $replace, $body2);
 $notes = preg_replace($find, $replace, $notes);
 
-// $body = wrap_accents($body);
-// $notes = wrap_accents($notes);
 
 ?><section id="main">
     <div id='content'>
