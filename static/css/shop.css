@@ -1,0 +1,237 @@
+.product
+{
+    width: 33.3%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 1em;
+    position: relative;
+}
+.product-thumbnail
+{
+    display: block;
+}
+.product-link
+{
+    display: block;
+}
+.product-name
+{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+/*
+    product buttons
+*/
+.shop-button,
+.pseudo-shop-button
+{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 200px;
+    height: 35px;
+    padding: 5px 20px;
+    color: #090;
+    background-color: #FFF;
+    border: 1px solid #0C0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    font-family:inherit;
+}
+.product.sold-out .shop-button,
+.product.sold-out .pseudo-shop-button
+{
+    background-color: #ddd;
+    /* color: #000; */
+    border-color: #ddd;
+}
+.shop-button:hover
+{
+    background-color: #0E0;
+    border: 1px solid #0E0;
+    color: #FFF;
+}
+.buttons-container
+{
+}
+.product.list-item .buttons-container
+{
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+.button-addToCart
+{
+    display: none;
+    margin-bottom: 5px;
+}
+.product.expanded .button-addToCart
+{
+    display: block;
+}
+
+/*
+    cart
+*/
+#cart-wrapper
+{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    max-width: 100%;
+    padding: 20px;
+    display: none;
+    background-color: #fff;
+}
+body.viewing-cart #cart-wrapper{
+    display: block;
+}
+#added-products-wrapper
+{
+    padding-bottom: 20px;
+}
+.cart-row
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cart-col
+{
+    flex: 0 0 100px;
+    position: relative;
+    padding-right: 1em;
+}
+.cart-col.name-col
+{
+    flex: 1;
+}
+.cart-col.remove-col
+{
+    flex: 0 0 80px;
+    cursor: pointer
+}
+.cart-col.remove-col:hover
+{
+    color: #ccc;
+}
+#added-products-wrapper .cart-row:last-child
+{
+    padding-bottom: 15px;
+}
+#added-products-wrapper .cart-row:last-child > .cart-col:after
+{
+    content: "–";
+    position: absolute;
+    left: 2px;
+    bottom: 0;
+    transform: translate(0, 100%);
+}
+#added-products-wrapper .cart-row:last-child > .cart-col.remove-col:after
+{
+    content:none;
+}
+#button-expand-cart
+{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+body.viewing-cart #button-expand-cart
+{
+    display: none;
+}
+
+#button-close-cart{
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+#button-close-cart:before,
+#button-close-cart:after{
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 2px;
+    background-color: #000;
+    left: 50%;
+    top: 50%;
+    transform-origin: center;
+}
+
+#button-close-cart:before{
+    transform: translate(-50%, -50%) rotate(45deg); 
+}
+#button-close-cart:after{
+    transform: translate(-50%, -50%) rotate(-45deg); 
+}
+#button-close-cart:hover:after,
+#button-close-cart:hover:before
+{
+    background-color: #ccc;
+}
+.cart-col.quantity-col > span
+{
+    display: inline-block;
+    vertical-align: top;
+}
+.item-quantity
+{
+    width: 2em;
+    text-align: center;
+}
+.button-decrease-quantity,
+.button-increase-quantity{
+    position: relative;
+    width: 0.5em;
+    height: 24px;
+    padding: 0 2px;
+    box-sizing: content-box;
+    cursor: pointer;
+}
+.button-decrease-quantity:before
+{
+    content: "";
+    position: absolute;
+    width: 0.5em;
+    height: 2px;
+    background-color: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button-increase-quantity:before
+{
+    content: "";
+    position: absolute;
+    width: 0.5em;
+    height: 2px;
+    background-color: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button-increase-quantity:after
+{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 0.5em;
+    background-color: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button-increase-quantity:hover:before,
+.button-increase-quantity:hover:after,
+.button-decrease-quantity:hover:before
+{
+    background-color: #ccc;
+}

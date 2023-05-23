@@ -1,0 +1,3 @@
+const paypal_config = {
+    
+}

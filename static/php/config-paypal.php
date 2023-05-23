@@ -1,4 +1,5 @@
 <?php
+$client_id = 'AZOWN6t-ioLBjw9HiXfGexBtH5WsFqAy92SU5CTHYeX8PwBSk8j-C5LYZL0aY-f1dRRF138bGmC4KoOs';
 $currencies = array(
     'eur' => array(
         'name'   => 'eur',
@@ -26,3 +27,123 @@ foreach($currencies as $c)
     }
 }
 $currency = isset($_GET['currency']) && isset($currencies[$_GET['currency']]) ? $currencies[$_GET['currency']] : $defaultCurrency;
+$shippingOptions_arr = array(
+	'default' => 'issue',
+	'issue' => array(
+	    'USD' => array(
+            array(
+                "id" => "SHIP_US",
+                "label" => "DOMESTIC",
+                "type" => "SHIPPING",
+                "selected" => true,
+                "amount" => array(
+                    'value' => "10.00",
+                    'currency_code' => "USD"
+                )
+            )
+        ), 
+	    'EUR' => array(
+	        array(
+                'id' => "SHIP_EU",
+	            'label' => "WITHIN EU",
+	            'type' => "SHIPPING",
+	            'selected' => true,
+	            'amount' => array(
+                    'value' => "10.00",
+	                'currency_code' => "EUR"
+                )
+            ),
+	        array(
+	        	'id' => "SHIP_WORLD",
+	            'label' => "REST OF THE WORLD",
+	            'type' => "SHIPPING",
+	            'selected' => false,
+	            'amount' => array(
+	                'value' => "40.00",
+	                'currency_code' => "EUR"
+                )
+            )
+        ),
+	    'GBP' => array(
+	        array(
+                'id' => "SHIP_UK",
+	            'label' => "WITHIN UK",
+	            'type' => "SHIPPING",
+	            'selected' => true,
+	            'amount' => array(
+                    'value' => "10.00",
+	                'currency_code' => "GBP"
+                )
+            ),
+	        array(
+	        	'id' => "SHIP_WORLD",
+	            'label' => "REST OF THE WORLD",
+	            'type' => "SHIPPING",
+	            'selected' => false,
+	            'amount' => array(
+	                'value' => "30.00",
+	                'currency_code' => "GBP"
+                )
+            )
+        )
+    ),
+	'archive' => array(
+	    'USD' => array(
+            array(
+                'id' => "SHIP_US",
+                'label' => "DOMESTIC",
+                'type' => "SHIPPING",
+                'selected' => true,
+                'amount' => array(
+                    'value' => "10.00",
+                    'currency_code' => "USD"
+                )
+            )
+            
+        ), 
+	    'EUR' => array(
+	        array(
+                'id' => "SHIP_EU",
+	            'label' => "WITHIN EU",
+	            'type' => "SHIPPING",
+	            'selected' => true,
+	            'amount' => array(
+	                'value' => "8.00",
+	                'currency_code' => "EUR"
+                )
+            ),
+	        array(
+	        	'id' => "SHIP_WORLD",
+	            'label' => "REST OF THE WORLD",
+	            'type' => "SHIPPING",
+	            'selected' => false,
+	            'amount' => array(
+	                'value' => "40.00",
+	                'currency_code' => "EUR"
+                )
+            )
+	    ),
+	    'GBP' => array(
+	        array(
+	        	'id' => "SHIP_UK",
+	            'label' => "WITHIN UK",
+	            'type' => "SHIPPING",
+	            'selected' => true,
+	            'amount' => array(
+	                'value' => "5.00",
+	                'currency_code' => "GBP"
+                )
+	        ),
+	        array(
+	        	'id' => "SHIP_WORLD",
+	            'label' => "REST OF THE WORLD",
+	            'type' => "SHIPPING",
+	            'selected' => false,
+	            'amount' => array(
+	                'value' => "30.00",
+	                'currency_code' => "GBP"
+                )
+            )
+        )
+	)
+);

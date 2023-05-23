@@ -63,6 +63,7 @@ else
 		<link rel="stylesheet" href="/static/css/main.css">
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="stylesheet" href="/static/css/mtdbt2f4d.css">
+		<?= $uri[1] == 'shop' ? '<link rel="stylesheet" href="/static/css/shop.css">' : ''; ?>
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	        <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
         	<script type='text/javascript' src='/static/js/loop.js'></script>
