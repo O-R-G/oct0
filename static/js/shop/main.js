@@ -19,7 +19,6 @@ async function init_shop(container, products, client_id = ''){
         await loadScript('/static/js/shop/' + scripts[i]);
     }
     addedProducts = !getCookie('addedProducts') ? {} : JSON.parse(getCookie('addedProducts'));
-    console.log(addedProducts);
     shopObj = new Shop(container, products, addedProducts, client_id);
 }
 function getCookie(cname) {

@@ -5,6 +5,7 @@ class Cart {
         this.quantity = 0;
         this.elements = {};
         this.elements.itemQuantity = {};
+        this.elements.itemSubtotal = {};
         this.paypal_config = paypal_config;
         this.columns = [
             { 
@@ -33,7 +34,6 @@ class Cart {
     init(){
         for(let p_id in this.addedProducts)
             this.quantity += this.addedProducts[p_id]['quantity'];
-        console.log(this.quantity);
         this.renderElements();
         // this.getElements();
         this.addListeners();
@@ -110,22 +110,22 @@ class Cart {
                     col.appendChild(itemQuantity);
                     col.appendChild(buttonIncreaseQuantity);
                     buttonIncreaseQuantity.addEventListener('click', function(){
-                        this.updateQuantity(p.id, 1);
+                        this.updateItemQuantity(p.id, p.price, 1);
                     }.bind(this));
                     buttonDecreaseQuantity.addEventListener('click', function(){
-                        this.updateQuantity(p.id, -1);
+                        this.updateItemQuantity(p.id, p.price, -1);
                     }.bind(this));
                     this.elements.itemQuantity[p.id] = itemQuantity;
                     break;
                 case 'subtotal':
-                    col.innerText = p['price']['amount'] * p['quantity'];
+                    col.innerText = p['price']['symbol'] + p['price']['amount'] * p['quantity'];
+                    this.elements.itemSubtotal[p.id] = col;
                     break;
                 case 'remove':
                     let buttonRemoveRow = document.createElement('DIV');
                     buttonRemoveRow.className = 'button-remove-row';
                     buttonRemoveRow.innerText = 'remove';
                     buttonRemoveRow.addEventListener('click', function(){
-                        console.log(this.addedProducts);
                         row.remove();
                         delete this.addedProducts[p.id];
                         this.updateCookie();
@@ -144,10 +144,13 @@ class Cart {
     {
         let q = typeof p['quantity'] != 'undefined' ? p['quantity'] : 1;
         if(typeof this.addedProducts[p.id] == 'undefined'){
+            p['quantity'] = q;
+            this.elements.addedProductsWrapper.appendChild( this.renderRow(p) );
             this.addedProducts[p.id] = p;
-            this.elements.addedProductsWrapper.appendChild( this.renderRow(p) );  
+            this.updateCartQuantity(q);
         }
-        this.updateQuantity(p.id, q);
+        else
+            this.updateItemQuantity(p.id, p.price, q);
     }
     getElements(){
         this.elements.wrapper = this.container.querySelector('#cart-wrapper');
@@ -163,12 +166,17 @@ class Cart {
             document.body.classList.remove('viewing-cart');
         });
     }
-    updateQuantity(p_id, q){
-        console.log('updateQuantity');
+    updateItemQuantity(p_id, p_price, q){
+        if(this.addedProducts[p_id]['quantity'] + q <= 0) return;
         this.addedProducts[p_id]['quantity'] += q;
         this.elements.itemQuantity[p_id].innerText = this.addedProducts[p_id]['quantity'];
+        this.elements.itemSubtotal[p_id].innerText = p_price['symbol'] + this.addedProducts[p_id]['quantity'] * p_price['amount'];
+        this.updateCartQuantity(q);
+    }
+    updateCartQuantity(q){
+        if(this.quantity + q < 0) return;
         this.quantity += q;
-        this.elements.buttonExpandCart.innerHTML = 'CART (<span id="cart-quantity">' +this.quantity+  '</span>)';
+        this.elements.buttonExpandCart.innerHTML = 'CART (<span id="cart-quantity">' + this.quantity +  '</span>)';
         this.updateCookie();
     }
     updateCookie(){
