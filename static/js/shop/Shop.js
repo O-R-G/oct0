@@ -1,15 +1,12 @@
 class Shop {
-    constructor(container, productData = [], addedProductData = {}, client_id){
+    constructor(container, productData = [], addedProductData = {}, paypal_config){
         this.container = container;
         this.productData = productData;
         this.addedProductData = addedProductData;
         this.products = [];
         this.cart = null;
         this.elements = {};
-        this.paypal_config = {
-            'client_id': client_id,
-            'url': 'https://www.paypal.com/sdk/js?client-id='+client_id+'&disable-funding=credit,card'
-        }
+        this.paypal_config = paypal_config;
         this.init(container);
     }
     init(){
@@ -89,119 +86,119 @@ class Shop {
     //     wrapper.appendChild(buttonsContainer);
     //     this.elements.productsContainer.appendChild(wrapper);
     // }
-    renderCart(){
-        let wrapper = document.createElement('DIV');
-        wrapper.id = 'cart-wrapper';
-        let html = '<div id="items-wrapper">';
-        html += this.renderCartRow();
-        for(let i = 0; i < this.addedProductData.length; i++)
-        {
-            let p = this.addedProductData[i];
-            html += this.renderCartRow(p);
-        }
-        html += '</div>';
-        html += '<div class="buttons-container"><button class="shop-button">Checkout</button></div><div id="close-cart-button"></div>';
-        wrapper.innerHTML = html;
-        let toggle = document.createElement('DIV');
-        toggle.id = 'cart-toggle';
-        toggle.className = 'buttons-container';
-        toggle.innerHTML = '<button class="shop-button">CART (<span id="cart-toggle-total">'+this.cart.quantity+'</span>)</button>';
-        this.elements.cartContainer.appendChild(wrapper);
-        this.container.appendChild(toggle);
-    }
-    renderCartRow(product = null){
-        let c = 'cart-row';
-        c += product ? ''  : ' columnNames';
-        let html = '<div class="'+c+'">';
-        let columns = this.cart.columns;
-        if(!product)
-        {
-            for(let i = 0; i < columns.length; i++)
-            {
-                html += '<div class="cart-col item-'+columns[i]['class']+'">' + columns[i]['display'] + '</div>';
-            }
-            html += '</div>';
-            return html;
-        }
-    }
+    // renderCart(){
+    //     let wrapper = document.createElement('DIV');
+    //     wrapper.id = 'cart-wrapper';
+    //     let html = '<div id="items-wrapper">';
+    //     html += this.renderCartRow();
+    //     for(let i = 0; i < this.addedProductData.length; i++)
+    //     {
+    //         let p = this.addedProductData[i];
+    //         html += this.renderCartRow(p);
+    //     }
+    //     html += '</div>';
+    //     html += '<div class="buttons-container"><button class="shop-button">Checkout</button></div><div id="close-cart-button"></div>';
+    //     wrapper.innerHTML = html;
+    //     let toggle = document.createElement('DIV');
+    //     toggle.id = 'cart-toggle';
+    //     toggle.className = 'buttons-container';
+    //     toggle.innerHTML = '<button class="shop-button">CART (<span id="cart-toggle-total">'+this.cart.quantity+'</span>)</button>';
+    //     this.elements.cartContainer.appendChild(wrapper);
+    //     this.container.appendChild(toggle);
+    // }
+    // renderCartRow(product = null){
+    //     let c = 'cart-row';
+    //     c += product ? ''  : ' columnNames';
+    //     let html = '<div class="'+c+'">';
+    //     let columns = this.cart.columns;
+    //     if(!product)
+    //     {
+    //         for(let i = 0; i < columns.length; i++)
+    //         {
+    //             html += '<div class="cart-col item-'+columns[i]['class']+'">' + columns[i]['display'] + '</div>';
+    //         }
+    //         html += '</div>';
+    //         return html;
+    //     }
+    // }
 
-    checkout(){
-        paypal.Buttons({
-	        createOrder: function(data, actions) {
-	        	// console.log('createOrder . . .');
-	            return actions.order.create({
-	                purchase_units: [{
-	                	amount: {
-	                        currency_code: currencyUppercase,
-	                        value: totalValue,
-	                        breakdown: {
-								item_total: { 
-									currency_code: currencyUppercase,
-									value: baseAmount
-								},
-								shipping: {
-									currency_code: currencyUppercase,
-									value: options[0].amount.value
-								}
-							}
-	                	},
-		              	shipping: {
-			              	options: options
-			            },
-			            items: items
-	                }]
+    // checkout(){
+    //     paypal.Buttons({
+	//         createOrder: function(data, actions) {
+	//         	// console.log('createOrder . . .');
+	//             return actions.order.create({
+	//                 purchase_units: [{
+	//                 	amount: {
+	//                         currency_code: currencyUppercase,
+	//                         value: totalValue,
+	//                         breakdown: {
+	// 							item_total: { 
+	// 								currency_code: currencyUppercase,
+	// 								value: baseAmount
+	// 							},
+	// 							shipping: {
+	// 								currency_code: currencyUppercase,
+	// 								value: options[0].amount.value
+	// 							}
+	// 						}
+	//                 	},
+	// 	              	shipping: {
+	// 		              	options: options
+	// 		            },
+	// 		            items: items
+	//                 }]
 	                
-	            });
-	        },
-	        onShippingChange: function (data, actions) {
-				if(data.amount.currency_code == 'USD' && data.shipping_address.country_code != 'US'){
-					return actions.reject();
-				}
-				else
-				{
-					data.amount.value = parseFloat(baseAmount, 10) + parseFloat(data.selected_shipping_option.amount.value, 10);
-					data.amount.value = data.amount.value + '';
-					return actions.order.patch([{
-						op: "replace",
-						path: "/purchase_units/@reference_id=='default'/amount",
-						value: { 
-							value: data.amount.value, 
-							currency_code: data.amount.currency_code,
-							breakdown: {
-								item_total: { 
-									currency_code: currencyUppercase,
-									value: baseAmount
-								},
-								shipping: {
-									currency_code: currencyUppercase,
-									value: parseFloat(data.selected_shipping_option.amount.value, 10)
-								}
-							}
-						}
-					}]);
-				}
-			},
-	        style: {
-	            color: 'black'
-	        },
-	        onError: function (err) {
-				// For example, redirect to a specific error page
-				// window.location.href = "/your-error-page-here";
-				// window.location.href = "/shop/issues/error";
-				console.log(err);
-			},
-	        onApprove: function(data, actions) {
-	            return actions.order.capture().then(function(orderData) {
-                    eraseCookie('serving-library-shop-cart');
-                    var return_url = location.protocol + '//' + location.host + "/shop/thx";
-					let email = orderData.payer.email_address;
-					return_url += '?email=' + encodeURIComponent(email)+'&currency='+encodeURIComponent(currencyUppercase);
-					[].forEach.call(items, function(el){
-						return_url += '&items[]='+ encodeURIComponent(el['quantity'] + ' × '+ el['name']);
-					});
-					actions.redirect(return_url);
-	            });
-	        }
-	  	}).render('#' + buttonContainerId);
-    }
+	//             });
+	//         },
+	//         onShippingChange: function (data, actions) {
+	// 			if(data.amount.currency_code == 'USD' && data.shipping_address.country_code != 'US'){
+	// 				return actions.reject();
+	// 			}
+	// 			else
+	// 			{
+	// 				data.amount.value = parseFloat(baseAmount, 10) + parseFloat(data.selected_shipping_option.amount.value, 10);
+	// 				data.amount.value = data.amount.value + '';
+	// 				return actions.order.patch([{
+	// 					op: "replace",
+	// 					path: "/purchase_units/@reference_id=='default'/amount",
+	// 					value: { 
+	// 						value: data.amount.value, 
+	// 						currency_code: data.amount.currency_code,
+	// 						breakdown: {
+	// 							item_total: { 
+	// 								currency_code: currencyUppercase,
+	// 								value: baseAmount
+	// 							},
+	// 							shipping: {
+	// 								currency_code: currencyUppercase,
+	// 								value: parseFloat(data.selected_shipping_option.amount.value, 10)
+	// 							}
+	// 						}
+	// 					}
+	// 				}]);
+	// 			}
+	// 		},
+	//         style: {
+	//             color: 'black'
+	//         },
+	//         onError: function (err) {
+	// 			// For example, redirect to a specific error page
+	// 			// window.location.href = "/your-error-page-here";
+	// 			// window.location.href = "/shop/issues/error";
+	// 			console.log(err);
+	// 		},
+	//         onApprove: function(data, actions) {
+	//             return actions.order.capture().then(function(orderData) {
+    //                 eraseCookie('serving-library-shop-cart');
+    //                 var return_url = location.protocol + '//' + location.host + "/shop/thx";
+	// 				let email = orderData.payer.email_address;
+	// 				return_url += '?email=' + encodeURIComponent(email)+'&currency='+encodeURIComponent(currencyUppercase);
+	// 				[].forEach.call(items, function(el){
+	// 					return_url += '&items[]='+ encodeURIComponent(el['quantity'] + ' × '+ el['name']);
+	// 				});
+	// 				actions.redirect(return_url);
+	//             });
+	//         }
+	//   	}).render('#' + buttonContainerId);
+    // }
 }

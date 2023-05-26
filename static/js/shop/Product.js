@@ -8,21 +8,19 @@ class Product{
         this.url = data.url;
         this.price = data.price;
         this.inStock = data.inStock;
-        this.shipping = data.shipping;
         this.imageSrc = data.imageSrc;
+        this.isListItem = isListItem;
         this.elements = {};
-        // this.temp = null;
         this.init();
     }
     init(){
         this.renderElements();
-        // this.getElements();
         this.addListeners();
     }
     renderElements(){
         let c = 'product';
         c += ! this.inStock ? ' sold-out' : ' in-stock';
-        c += ! this.isListItem ? ' list-item' : '';
+        c += ! this.isListItem ? '' : ' list-item';
         this.elements.wrapper = document.createElement('DIV');
         this.elements.wrapper.className = c;
         let html = '<a class="product-link" href="'+this.url+'">';

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="static/js/xeyes.js"></script>
+<script type="text/javascript" src="/static/js/xeyes.js"></script>
 <canvas id="eyes"></canvas>
 <style>
     #eyes {
