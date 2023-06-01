@@ -238,3 +238,8 @@ body.viewing-cart #button-expand-cart
 {
     background-color: #ccc;
 }
+.paypal-buttons
+{
+    width: 200px !important;
+    display: block !important;
+}
