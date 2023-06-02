@@ -169,11 +169,16 @@ blockquote {
 }
 .fr
 {
-    font-family: mtdbt2f4d-66, Helvetica, Arial, sans-serif;
+    font-family: 'mtdbt2f4d-66', Helvetica, Arial, sans-serif;
 }
 #en
 {
+    font-family: 'mtdbt2f4d-88', Helvetica, Arial, sans-serif;
     padding-right: 20px;
+}
+.en
+{
+    font-family: 'mtdbt2f4d-88', Helvetica, Arial, sans-serif;
 }
 #notes {
     border-top: 1px solid #000;
