@@ -6,6 +6,7 @@ $item = $oo->get($temp_id);
 
 ?>
 <div id="temp-container">
+    <div id="temp-logo" class="image-block content-block"><img src="/media/jpg/email-logo.jpg"></div>
     <div class="text-block content-block">
         <div class="en"><?php echo $item['deck']; ?></div>
         <div class="fr"><?php echo $item['address2']; ?></div>
@@ -40,6 +41,15 @@ $item = $oo->get($temp_id);
         .text-block > .fr
         {
             padding-left: 80px;
+        }
+        #temp-logo
+        {
+            padding-bottom: 15px;
+        }
+        #temp-logo > img
+        {
+            width: 30%;
+            min-width: 120px;
         }
         .image-block > img
         {
