@@ -8,7 +8,7 @@ if (!$uri[1])
     require_once("views/temp.php");
 else 
 {
-    exit('nothing here . . .');
+    require_once("views/main.php");
 }
 require_once("views/foot.php");
 ?>

@@ -11,7 +11,7 @@ $item = $oo->get($temp_id);
         <div class="en"><?php echo $item['deck']; ?></div>
         <div class="fr"><?php echo $item['address2']; ?></div>
     </div>
-    <div class="image-block content-block"><img src="/media/gif/O-4-1080-forever.gif"></div>
+    <div class="image-block content-block"><a href="/sign-up"><img src="/media/gif/O-4-1080-forever.gif"></a></div>
     <div class="text-block content-block">
         <div class="en">with</div>
         <div class="fr">avec</div>
@@ -21,7 +21,7 @@ $item = $oo->get($temp_id);
         <div class="en"><?php echo $item['body']; ?></div>
         <div class="fr"><?php echo $item['address1']; ?></div>
     </div>
-    <div class="image-block"><img src="/media/jpg/email-2.jpg"></div>
+    <div class="image-block content-block"><img src="/media/jpg/email-2.jpg"></div>
     <style>
         #temp-container
         {
@@ -46,12 +46,12 @@ $item = $oo->get($temp_id);
         {
             padding-bottom: 15px;
         }
-        #temp-logo > img
+        #temp-logo img
         {
             width: 30%;
             min-width: 120px;
         }
-        .image-block > img
+        .image-block img
         {
             display: block;
             width: 100%;
