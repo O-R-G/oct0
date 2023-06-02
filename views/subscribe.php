@@ -1,11 +1,13 @@
 <?php
 require_once('static/php/vendor/autoload.php');
 
-$key = getenv('SendinBlueApiKey');
-// var_dump($key);
-$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
+$key = getenv('BREVO_API_KEY');
+// $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
+$config = Brevo\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
 
-$apiInstance = new SendinBlue\Client\Api\ContactsApi(
+$apiInstance = new Brevo\Client\Api\ContactsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
@@ -14,6 +16,12 @@ if(!isset($_POST['action']))
 {
     $limit = 10;
     $offset = 0;
+    if(!$uri[1])
+    {
+        $item_id = $oo->urls_to_ids(array('sign-up'));
+        $item_id = end($item_id);
+        $item = $oo->get($item_id);
+    }
 
     preg_match('/\[list\-name\]\((.*?)\)/', trim($item['deck']), $temp);
     $listId = 0;
@@ -63,7 +71,7 @@ if(!isset($_POST['action']))
                         </form>
                     </div><div id='fr'>
                         <form id="newsletter-form-fr" class="newsletter-form" method="POST">
-                            <div><?= trim($item['notes']); ?></div>
+                            <div><?= $item['address1'] ? trim($item['address1']) : ''; ?></div>
                             <input type="hidden" name="action" value="sign-up">
                             <input type="hidden" name="listId" value="<?= $listId; ?>">
                             <input type="email" name="email">
@@ -121,10 +129,9 @@ if(!isset($_POST['action']))
 }
 else if( $_POST['action'] == 'sign-up' )
 {
-    $createContact = new \SendinBlue\Client\Model\CreateContact(); // Values to create a contact
+    $createContact = new \Brevo\Client\Model\CreateContact(); // Values to create a contact
     $createContact['email'] = $_POST['email'];
     $createContact['listIds'] = [intval($_POST['listId'])];
-
     try {
         $result_obj = $apiInstance->createContact($createContact);        
         $result = (array) $result_obj;

@@ -29,6 +29,10 @@ class ComposerStaticInitd1487b693f5dac02a11b2bf1242e7133
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+        'B' => 
+        array (
+            'Brevo\\Client\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -56,6 +60,10 @@ class ComposerStaticInitd1487b693f5dac02a11b2bf1242e7133
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Brevo\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/getbrevo/brevo-php/lib',
         ),
     );
 

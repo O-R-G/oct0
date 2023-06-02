@@ -22,6 +22,7 @@ $item = $oo->get($temp_id);
         <div class="fr"><?php echo $item['address1']; ?></div>
     </div>
     <div class="image-block content-block"><img src="/media/jpg/email-2.jpg"></div>
+    <?php require_once("views/subscribe.php"); ?>
     <style>
         #temp-container
         {
@@ -59,6 +60,15 @@ $item = $oo->get($temp_id);
             margin: 0 auto;
         }
         .content-block + .content-block
+        {
+            margin-top: 28px;
+        }
+        #temp-container #content,
+        #temp-container #content > div
+        {
+            padding: 0;
+        }
+        #main
         {
             margin-top: 28px;
         }
