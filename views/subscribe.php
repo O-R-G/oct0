@@ -1,6 +1,5 @@
 <?php
-require_once('static/php/vendor/autoload.php');
-
+require_once(__DIR__ . '/../static/php/vendor/autoload.php');
 $key = getenv('BREVO_API_KEY');
 // $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
 $config = Brevo\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);

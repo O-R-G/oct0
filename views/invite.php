@@ -6,7 +6,7 @@ $item = $oo->get($temp_id);
 
 ?>
 <div id="temp-container">
-    <div id="temp-logo" class="image-block content-block"><img src="/media/jpg/email-logo.jpg"></div>
+    <!-- <div id="temp-logo" class="image-block content-block"><img src="/media/jpg/email-logo.jpg"></div> -->
     <div class="text-block content-block">
         <div class="en"><?php echo $item['deck']; ?></div>
         <div class="fr"><?php echo $item['address2']; ?></div>
@@ -22,7 +22,15 @@ $item = $oo->get($temp_id);
         <div class="fr"><?php echo $item['address1']; ?></div>
     </div>
     <div class="image-block content-block"><img src="/media/jpg/email-2.jpg"></div>
-    <?php require_once("views/subscribe.php"); ?>
+    <div class="text-block content-block">
+        <div class="en">
+		<a href="/sign-up">Join the OCT0 mailing list ...</a>
+	</div>
+        <div class="fr">
+		<a href="/sign-up">Abonnez-vous à la liste d'envoi d’OCT0 ...</a>
+	</div>
+    </div>
+    <!-- <?php require_once('views/subscribe.php'); ?> -->
     <style>
         #temp-container
         {

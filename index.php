@@ -5,10 +5,13 @@ $uri = explode('/', $requestclean);
 
 require_once("views/head.php");
 if (!$uri[1])
-    require_once("views/temp.php");
+    require_once("views/o.php");
+    // require_once("views/invite.php");
+else if ($uri[1] == 'invite' && count($uri) == 2)
+    require_once("views/invite.php");
 else if ($uri[1] == 'sign-up' && count($uri) == 2)
     require_once("views/subscribe.php");
-else 
+else
 {
     require_once("views/main.php");
 }
