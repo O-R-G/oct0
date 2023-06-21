@@ -22,6 +22,12 @@ $item = $oo->get($temp_id);
         <div class="fr"><?php echo $item['address1']; ?></div>
     </div>
     <div class="image-block content-block"><img id="semiotexte" src="/media/jpg/email-2.jpg"></div>
+    <!--
+    <div class="text-block content-block">
+        <div class="en">Afterparty from 20:00 at Catherine Bastide <a href='https://maps.apple.com/?address=16%20Traverse%20Ste-H%C3%A9l%C3%A8ne,%2013007%20Marseille,%20France&ll=43.283743,5.350525&q=16%20Traverse%20Ste-H%C3%A9l%C3%A8ne&_ext=EiYpxOBRTLmjRUAxEj0M4a1gFUA5QrZ3qN+kRUBBaIWXvVBtFUBQBA%3D%3D'>16 Traverse Sainte Hélène 13007 Marseille</a></div>
+        <div class="fr">Afterparty à partir de 20:00 chez Catherine Bastide <a href='https://maps.apple.com/?address=16%20Traverse%20Ste-H%C3%A9l%C3%A8ne,%2013007%20Marseille,%20France&ll=43.283743,5.350525&q=16%20Traverse%20Ste-H%C3%A9l%C3%A8ne&_ext=EiYpxOBRTLmjRUAxEj0M4a1gFUA5QrZ3qN+kRUBBaIWXvVBtFUBQBA%3D%3D'>16 Traverse Sainte Hélène 13007 Marseille</a></div>
+    </div>
+    -->
     <div class="text-block content-block">
         <div class="en">
 		<a href="/sign-up">Join the OCT0 mailing list ...</a>
