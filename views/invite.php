@@ -8,8 +8,8 @@ $item = $oo->get($temp_id);
 <div id="temp-container">
     <div id="temp-logo" class="image-block content-block"><img src="/media/jpg/email-logo.jpg"></div>
     <div class="text-block content-block">
-        <div class="en"><?php echo $item['deck']; ?></div>
-        <div class="fr"><?php echo $item['address2']; ?></div>
+        <div class="en"><?php echo $item['body']; ?></div>
+        <div class="fr"><?php echo $item['notes']; ?></div>
     </div>
     <div class="image-block content-block"><a href="/sign-up"><img src="/media/gif/O-4-1080-forever.gif"></a></div>
     <div class="text-block content-block">
@@ -18,8 +18,8 @@ $item = $oo->get($temp_id);
     </div>
     <div class="image-block content-block"><img src="/media/jpg/email-1.jpg"></div>
     <div class="text-block content-block">
-        <div class="en"><?php echo $item['body']; ?></div>
-        <div class="fr"><?php echo $item['address1']; ?></div>
+        <div class="en"><?php echo $item['address1']; ?></div>
+        <div class="fr"><?php echo $item['address2']; ?></div>
     </div>
     <div class="image-block content-block"><img id="semiotexte" src="/media/jpg/email-2.jpg"></div>
     <!--
