@@ -6,11 +6,17 @@ $item = $oo->get($temp_id);
 
 ?>
 <div id="temp-container">
+    <!--
     <div id="temp-logo" class="image-block content-block"><img src="/media/jpg/email-logo.jpg"></div>
+    -->
     <div class="text-block content-block">
+        <?= $item['deck']; ?>
+	<!--
         <div class="en"><?php echo $item['body']; ?></div>
         <div class="fr"><?php echo $item['notes']; ?></div>
+	-->
     </div>
+    <!--
     <div class="image-block content-block"><a href="/sign-up"><img src="/media/gif/O-4-1080-forever.gif"></a></div>
     <div class="text-block content-block">
         <div class="en">with</div>
@@ -22,6 +28,7 @@ $item = $oo->get($temp_id);
         <div class="fr"><?php echo $item['address2']; ?></div>
     </div>
     <div class="image-block content-block"><img id="semiotexte" src="/media/jpg/email-2.jpg"></div>
+    -->
     <!--
     <div class="text-block content-block">
         <div class="en">Afterparty from 20:00 at Catherine Bastide <a href='https://maps.apple.com/?address=16%20Traverse%20Ste-H%C3%A9l%C3%A8ne,%2013007%20Marseille,%20France&ll=43.283743,5.350525&q=16%20Traverse%20Ste-H%C3%A9l%C3%A8ne&_ext=EiYpxOBRTLmjRUAxEj0M4a1gFUA5QrZ3qN+kRUBBaIWXvVBtFUBQBA%3D%3D'>16 Traverse Sainte Hélène 13007 Marseille</a></div>
