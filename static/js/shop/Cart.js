@@ -237,6 +237,7 @@ class Cart {
     }
     createPaypalButton(){
         // let sItem_row = document.getElementsByClassName('item-row');
+        let self = this;
         if(Object.keys(this.addedProducts).length > 0)
         {
             let currencyUppercase = this.paypal_config['currency']['name'].toUpperCase();
@@ -336,8 +337,9 @@ class Cart {
                     console.log(err);
                 },
                 onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(orderData) {
-                        eraseCookie('serving-library-shop-cart');
+                    
+                    return actions.order.capture().then((orderData) => {
+                        self.cleanCookie();
                         var return_url = location.protocol + '//' + location.host + "/shop/thx";
                         let email = orderData.payer.email_address;
                         return_url += '?email=' + encodeURIComponent(email)+'&currency='+encodeURIComponent(currencyUppercase);

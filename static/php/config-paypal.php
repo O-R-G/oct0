@@ -1,5 +1,7 @@
 <?php
-$client_id = 'AZOWN6t-ioLBjw9HiXfGexBtH5WsFqAy92SU5CTHYeX8PwBSk8j-C5LYZL0aY-f1dRRF138bGmC4KoOs';
+$paypal_mode = getenv('PAYPAL_MODE') ? getenv('PAYPAL_MODE') : 'live';
+$client_id = $paypal_mode === 'live' ? getenv('PAYPAL_CLIENT_ID_LIVE') : getenv('PAYPAL_CLIENT_ID_SANDBOX');
+
 $currencies = array(
     'eur' => array(
         'name'   => 'eur',
