@@ -152,6 +152,11 @@ if($temp && count($temp) && $subscribe_item = $oo->get(end($temp))) {
                 padding: 2px 5px;
                 left: 0;
                 top: 0;
+                height: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-width: 100%;
             }
             input[name="email"]
             {
