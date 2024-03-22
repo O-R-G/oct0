@@ -6,7 +6,7 @@ $uri = explode('/', $requestclean);
 require_once("views/head.php");
 require_once("views/language-toggle.php");
 require_once("views/menu.php");
-require_once("views/line.php");
+require_once("views/logo.php");
 require_once("views/subscribe.php");
 
 if ($uri[1] == 'shop'){

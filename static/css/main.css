@@ -121,13 +121,15 @@ blockquote {
 
 #content,
 .content-container {
-    padding: 1.0em;
+    padding: var(--padding);
 }
-
+#content {
+    width: 50%;
+}
 #columns {
     columns: 300px 2;
     column-gap:60px;
-    padding: 1em;
+    padding: var(--padding);
 }
 
 #columns.columnsDisabled {
@@ -461,10 +463,6 @@ blockquote {
 .fixed {
     position: fixed;
 }
-.button-area + .button-area
-{
-    /*margin-top: 11px;*/
-}
 #shopContainer a:link,
 #shopContainer a:visited
 {
@@ -509,11 +507,13 @@ blockquote {
         /* color: red; */
     }
 }
-/* a:hover {
-    animation: var(--font-animation);
-} */
 
 /* vertical iPhone */
 @media screen and (max-width: 500px) {
-
+    :root {
+        --padding: 0.5em;
+    }
+    #content {
+        width: auto;
+    }
 }

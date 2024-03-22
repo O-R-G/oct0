@@ -70,6 +70,7 @@ if(!empty($nav))
     position: fixed;
     z-index: 1000;
     overflow: scroll;
+    background-color: #fff;
 }
 .viewing-menu #menu {
     display: block;

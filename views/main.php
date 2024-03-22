@@ -14,7 +14,4 @@ $notes = isset($item['notes']) ? $item['notes'] : '';
     </div>
 </section>
 <style>
-    #content{
-        width: 50%;
-    }
 </style>

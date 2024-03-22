@@ -18,8 +18,12 @@
             font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif;
             padding: 20px;
             z-index: 1000;
+            white-space: nowrap;
         }
-
+        .viewing-menu #logo {
+            opacity: 0.25;
+            pointer-events: none;
+        }
         #main-title {
             font-size: 2.0em;
             border-radius: 50%;
