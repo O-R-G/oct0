@@ -4,33 +4,18 @@
     */
 
     ?><style>
-        body {
-            font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif;
-            font-size: 21px;
-            line-height: 24px;
-        }
-
-        #badge {
-            display: none;
-        }
-
-        :root {
+        /* :root {
             --octo-box-size: min(min(100vw, 100vh), 700px);
-        }
+        } */
 
-        #menu {
+        /* #menu {
             height: 100vh;
             position: relative;
-        }
+        } */
 
-        #oct0 {
-            font-size: 3.0em; 
-            /*
-            border: 1px solid;
-            border-radius: 50%;
-            width: 250px;
-            height: 250px;
-            */
+        #logo {
+            font-size: 3rem; 
+            font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif;
             padding: 20px;
             z-index: 1000;
         }
@@ -77,14 +62,6 @@
         }
 
         .octo-arm-name {
-        }
-
-        .absolute {
-            position: absolute;
-        }
-
-        .fixed {
-            position: fixed;
         }
 
         .octo-arm:nth-child(3) {
@@ -150,22 +127,6 @@
             }
         }
     </style>
-    <div id="oct0" class="centre fixed">
-        <div>
-            <? if( $uri[1] ){
-                ?><a class="active" href='/'>OCT</a><?
-            } else {
-                ?><span class=''>OCT</span><?
-            } ?><span id="logo-numeral"><?
-                $digit = 0;
-                foreach($arms as $arm) {
-                    $class = ($uri[1] == $arm['url']) ? 'static' : 'active';
-                    if (!empty($arm['body']))
-                        echo "<a href='/" . $arm['url'] . "' class='$class'>$digit</a>";
-                    else 
-                        echo "<span class='$class'>$digit</span>";
-                    $digit++;
-                }
-            ?></span><span id='logo-zero' class='hidden'>0</span>
-        </div>
+    <div id="logo" class="centre fixed">
+        <a class="active" href='/'>OCT 0</a>
     </div>

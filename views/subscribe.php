@@ -1,27 +1,41 @@
 <?php
 require_once('static/php/vendor/autoload.php');
-
-$key = getenv('SendinBlueApiKey');
+$key = getenv('BREVO_API_KEY');
 // var_dump($key);
-$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
+// $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
 
-$apiInstance = new SendinBlue\Client\Api\ContactsApi(
+// $apiInstance = new SendinBlue\Client\Api\ContactsApi(
+//     new GuzzleHttp\Client(),
+//     $config
+// );
+
+// Configure API key authorization: api-key
+$config = Brevo\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
+// var_dump($key);
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Brevo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// Configure API key authorization: partner-key
+// $config = Brevo\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Brevo\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('partner-key', 'Bearer');
+
+$apiInstance = new Brevo\Client\Api\ContactsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-
-if(!isset($_POST['action']))
-{
-    $limit = 10;
-    $offset = 0;
-
-    preg_match('/\[list\-name\]\((.*?)\)/', trim($item['deck']), $temp);
+$limit = 10;
+$offset = 0;
+$temp = $oo->urls_to_ids(array('sign-up'));
+if($temp && count($temp) && $subscribe_item = $oo->get(end($temp))) {
+    // $subscribe_item = $oo->get(end($temp));
+    preg_match('/\[list\-name\]\((.*?)\)/', trim($subscribe_item['deck']), $temp);
     $listId = 0;
     if(!empty($temp))
         $listName = $temp[1];
-
     try {
-        $lists_obj = $apiInstance->getLists($limit, $offset);
+        $lists_obj = $apiInstance->getLists();
         $lists = (array) $lists_obj;
         $lists = $lists[array_key_first($lists)]["lists"];
         forEach($lists as $l)
@@ -36,72 +50,129 @@ if(!isset($_POST['action']))
         echo 'Exception when calling ContactsApi->getFolderLists: ', $e->getMessage(), PHP_EOL;
     }
 
-    if($listId != 0) {
+    if($listId) {
     ?>
         <script>
-            function checkForm(event){
-                event.preventDefault();
-                let thisForm = event.target.parentNode;
-                while(thisForm.tagName.toLowerCase() != 'form')
-                    thisForm = thisForm.parentNode;
+            function checkEmpty(event){
+                let t = event.target;
+                if(t.value === '') {
+                    // t.setAttribute('data-is-empty', true)
+                    t.parentNode.setAttribute('data-is-empty', true)
+                }
+                else {
+                    // t.setAttribute('data-is-empty', false)
+                    t.parentNode.setAttribute('data-is-empty', false)
+                }
+            }
+            function checkForm(form){
+                // event.preventDefault();
+                let thisForm = form ? form : document.querySelector('form');
                 let thisEmailInput = thisForm.querySelector('input[name="email"]');
-                if(thisEmailInput && thisEmailInput.value !== '')
-                    thisForm.submit();
-                else console.log('empty email')
+                return thisEmailInput && thisEmailInput.value !== '';
+                // if(thisEmailInput && thisEmailInput.value !== '')
+                //     thisForm.submit();
+                // else console.log('empty email')
+            }
+            function submitSubscribeForm(event){
+                event.preventDefault();
+                let form = event.target;
+                while(form.tagName.toLowerCase() !== 'form'){
+                    if(form === document.body) return;
+                    form = form.parentNode;
+                }
+                    
+                valid = checkForm(event.target.parentNode);
+                if(!valid) return;
+                let url = '/static/php/subscribeHandler.php';
+                fetch(url, {
+                    method: 'POST',
+                    // headers: {
+                    //     'Content-Type': 'multipart/form-data'
+                    // },
+                    body: new FormData(form)
+                })
+                 .then((response)=>response.json())
+                 .then((data)=>{
+                    if(data['status'] == 'error') throw new Error(data['body']);
+                    else {
+                        document.getElementById('subscribe-error-message').innerHTML = '';
+                        document.getElementById('subscribe-success-message').innerHTML = data['body'];
+                        setTimeout(()=>{
+                            document.getElementById('subscribe-success-message').innerHTML = '';
+                        }, 4000);
+                    }
+                 })
+                 .catch((err)=>{
+                    document.getElementById('subscribe-error-message').innerHTML = err;
+                    setTimeout(()=>{
+                        document.getElementById('subscribe-error-message').innerHTML = '';
+                    }, 4000);
+                 });
             }
         </script>
-        <section id="main" >
-            <div id='content'>
-                <div id="columns" class="columnsDisabled">
-                    <div id='en'>
-                        <form id="newsletter-form-en" class="newsletter-form" method="POST">
-                            <div><?= trim($item['body']); ?></div>
-                            <input type="hidden" name="action" value="sign-up">
-                            <input type="hidden" name="listId" value="<?= $listId; ?>">
-                            <input type="email" name="email">
-                            <button class="mailinglist-submit" onclick="checkForm(event)"></button>
-                        </form>
-                    </div><div id='fr'>
-                        <form id="newsletter-form-fr" class="newsletter-form" method="POST">
-                            <div><?= trim($item['notes']); ?></div>
-                            <input type="hidden" name="action" value="sign-up">
-                            <input type="hidden" name="listId" value="<?= $listId; ?>">
-                            <input type="email" name="email">
-                            <button class="mailinglist-submit" onclick="checkForm(event)"></button>
-                        </form>
-                    </div>
+        <div id="subscribe-container" class="fixed">
+            <form id="subscribe-form" class="subscribe-form" method="POST">
+                <input type="hidden" name="action" value="sign-up">
+                <input type="hidden" name="listId" value="<?= $listId; ?>">
+                <div id="email-input-wrapper" class="input-wrapper" data-is-empty="true">
+                    <input type="email" name="email" oninput="checkEmpty(event)">
+                    <div class="en pseudo-placeholder"><?= $subscribe_item['body']; ?></div>
+                    <div class="fr pseudo-placeholder"><?= $subscribe_item['notes']; ?></div>
                 </div>
-            
-            <div id='nav'><?
-                $next = ($uri[1] == 'about') ? 'contact' : 'about'; 
-                if (!empty($item['url'])) {
-                    ?><a href='/'>
-                        <img class='inline-svg' src='media/svg/x-12-k.svg'>
-                    </a>
-                    <a href='/<?= $next; ?>'>
-                        <img class='inline-svg' src='media/svg/arrow-right-12-k.svg'>
-                    </a><?
-                }
-            ?>
-            </div>
-            </div>
-        </section>
+                <button class="mailinglist-submit" onclick="submitSubscribeForm(event)"></button>
+                <div id="subscribe-messages">
+                    <span id="subscribe-success-message"></span>
+                    <span id="subscribe-error-message"></span>
+                </div>
+            </form>
+        </div>
         <style>
-            .newsletter-container
+            #subscribe-container
             {
-                /*max-width: 540px;*/
-                /*padding: 1em;*/
+                bottom: var(--padding);
+                left: var(--padding);
+                
+            }
+            #subscribe-form {
+                position: relative;
+                width: 45vw;
+                max-width: 300px;
+                display: flex;
+                align-items: center;
+            }
+            .input-wrapper {
+                position: relative;
+            }
+            #email-input-wrapper {
+                flex: 1;
+            }
+            .pseudo-placeholder {
+                position: absolute;
+                pointer-events: none;
+                padding: 2px 5px;
+                left: 0;
+                top: 0;
             }
             input[name="email"]
             {
+                width: 100%;
                 outline: none;
                 padding: 0;
                 box-shadow: none;
-                min-width: 180px;
-                width: 50%;
+                
+                /* min-width: 25vw; */
                 border: none;
                 border-bottom: 2px solid #000;
-                padding: 5px;
+                padding: 2px 5px;
+                font-family: inherit;
+                font-size: inherit;
+            }
+            input[name="email"]:focus ~ .pseudo-placeholder,
+            [data-is-empty='false'] > .pseudo-placeholder{
+                display: none;
+            }
+            [data-is-empty="true"] ~ button {
+                display: none
             }
             .mailinglist-submit
             {
@@ -111,31 +182,20 @@ if(!isset($_POST['action']))
                 border: none;
                 width: 22px;
                 height: 22px;
-                background-image: url('media/svg/arrow-right-12-k.svg');
+                background-image: url('/media/svg/arrow-right-12-k.svg');
                 background-size: 100%;
                 cursor: pointer;
                 vertical-align: middle;
             }
+            #subscribe-messages {
+                padding: 2px 5px;
+                position: absolute;
+                transform: translate(0, -100%);
+            }
+            #subscribe-error-message {
+                color: #f00;
+            }
         </style><?
-    } else { ?><script>window.location.href="/sign-up/error";</script><? }
-}
-else if( $_POST['action'] == 'sign-up' )
-{
-    $createContact = new \SendinBlue\Client\Model\CreateContact(); // Values to create a contact
-    $createContact['email'] = $_POST['email'];
-    $createContact['listIds'] = [intval($_POST['listId'])];
-
-    try {
-        $result_obj = $apiInstance->createContact($createContact);        
-        $result = (array) $result_obj;
-        $result = $result[array_key_first($result)];
-        if(isset($result['id'])){
-            ?><script>window.location.href="/sign-up/success";</script><?
-        }
-    } catch (Exception $e) {
-        // $error = (array) $e;
-        // $error = json_decode($error[array_key_first($error)], true);
-        ?><script>window.location.href="/sign-up/error";</script><?
     }
-    
 }
+    

@@ -44,6 +44,9 @@ if($uri[1] == 'penumbra' && count($uri) == 2)
 else
 	$card_image = "/media/jpg/og.jpg";
 
+$default_language = getenv('DEFAULT_LANG') ? getenv('DEFAULT_LANG') : 'fr';
+$current_language = $uri[1] ? $uri[1] : $default_language;
+
 ?><!DOCTYPE html>
 <html>
 	<head>
@@ -68,5 +71,5 @@ else
 	        <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
         	<script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
-	<body>
+	<body current-lang = '<?php echo $current_language; ?>'>
 
