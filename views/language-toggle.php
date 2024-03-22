@@ -33,6 +33,7 @@ echo $html;
     position: fixed;
     right: var(--padding);
     bottom: var(--padding);
+    z-index: 1100;
 }
 #language-toggle:after {
 
