@@ -132,5 +132,5 @@
         }
     </style>
     <div id="logo" class="centre fixed">
-        <a class="active" href='/'>OCT 0</a>
+        <a class="active" href='/<?php echo $current_language; ?>'>OCT 0</a>
     </div>
