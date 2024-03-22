@@ -6,6 +6,7 @@
 :root {
     --padding: 1em;
     --font-animation: none;
+    --arrow-animation: none;
 }
 html {
     font-size: 21px;
@@ -23,6 +24,7 @@ body {
 }
 body[animation-version="1"] {
     --font-animation: looping_font .5s infinite alternate-reverse;
+    --arrow-animation: stroke_width_variation .5s infinite alternate-reverse;
 }
 body.night
 {
@@ -508,6 +510,56 @@ blockquote {
     }
     100% {
         font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif;
+        /* color: red; */
+    }
+}
+@keyframes stroke_width_variation {
+    0% {
+        stroke-width:8;
+    }
+    14% {
+        stroke-width:8;
+    }
+    14.29% {
+        stroke-width:9;
+    }
+    28% {
+        stroke-width:9;
+    }
+    28.57% {
+        stroke-width:10;
+    }
+    42% {
+        stroke-width:10;
+    }
+    42.86% {
+        stroke-width:11;
+    }
+    57% {
+        stroke-width:11;
+    }
+    57.14% {
+        stroke-width:12;
+    }
+    71% {
+        stroke-width:12;
+    }
+    71.43% {
+        stroke-width:13;
+    }
+    85% {
+        stroke-width:13;
+    }
+    85.71% {
+        stroke-width:14;
+        /* color: blue; */
+    }
+    99% {
+        stroke-width:14;
+        /* color: blue; */
+    }
+    100% {
+        stroke-width:15;
         /* color: red; */
     }
 }

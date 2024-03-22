@@ -91,7 +91,7 @@ if(!empty($nav))
 }
 #menu-toggle:hover .st0 {
     /* stroke-width:12; */
-    animation: stroke_width_variation .5s infinite alternate-reverse;
+    animation: var(--arrow-animation);
 }
 .viewing-menu #menu-toggle {
     transform: rotate(630deg);
@@ -119,56 +119,6 @@ if(!empty($nav))
     display: block;
     clear: both;
     height: 0;
-}
-@keyframes stroke_width_variation {
-    0% {
-        stroke-width:8;
-    }
-    14% {
-        stroke-width:8;
-    }
-    14.29% {
-        stroke-width:9;
-    }
-    28% {
-        stroke-width:9;
-    }
-    28.57% {
-        stroke-width:10;
-    }
-    42% {
-        stroke-width:10;
-    }
-    42.86% {
-        stroke-width:11;
-    }
-    57% {
-        stroke-width:11;
-    }
-    57.14% {
-        stroke-width:12;
-    }
-    71% {
-        stroke-width:12;
-    }
-    71.43% {
-        stroke-width:13;
-    }
-    85% {
-        stroke-width:13;
-    }
-    85.71% {
-        stroke-width:14;
-        /* color: blue; */
-    }
-    99% {
-        stroke-width:14;
-        /* color: blue; */
-    }
-    100% {
-        stroke-width:15;
-        /* color: red; */
-    }
 }
 
 @media screen and (max-width: 500px) {
