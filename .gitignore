@@ -27,3 +27,6 @@ log
 
 # env
 .env
+
+# composer
+static/php/vendor
