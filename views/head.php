@@ -46,7 +46,7 @@ else
 
 $default_language = getenv('DEFAULT_LANG') ? getenv('DEFAULT_LANG') : 'fr';
 $current_language = $uri[1] ? $uri[1] : $default_language;
-
+$animation_version = isset($_GET['animation']) ? $_GET['animation'] : 0;
 ?><!DOCTYPE html>
 <html>
 	<head>
@@ -71,5 +71,5 @@ $current_language = $uri[1] ? $uri[1] : $default_language;
 	        <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
         	<script type='text/javascript' src='/static/js/loop.js'></script>
 	</head>
-	<body current-lang = '<?php echo $current_language; ?>'>
+	<body current-lang = '<?php echo $current_language; ?>' animation-version='<?php echo $animation_version; ?>'>
 

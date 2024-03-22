@@ -5,7 +5,7 @@
 }
 :root {
     --padding: 1em;
-    --font-animation: looping_font .5s infinite alternate-reverse;
+    --font-animation: none;
 }
 html {
     font-size: 21px;
@@ -19,6 +19,10 @@ body {
 	line-height: 1.22;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-text-size-adjust: 100%;
+
+}
+body[animation-version="1"] {
+    --font-animation: looping_font .5s infinite alternate-reverse;
 }
 body.night
 {
