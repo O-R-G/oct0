@@ -4,7 +4,7 @@ $response = array(
     'status' => 'error',
     'body' => 'test'
 );
-// var_dump($_POST);
+
 if(!isset($_POST['email'])) {
     $response['body'] = 'missing email';
     exit(json_encode($response));
@@ -13,7 +13,7 @@ if(!isset($_POST['listId'])) {
     $response['body'] = 'missing listId';
     exit(json_encode($response));
 }
-exit(json_encode($response));
+
 $key = getenv('BREVO_API_KEY');
 $config = Brevo\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $key);
 $apiInstance = new Brevo\Client\Api\ContactsApi(
@@ -34,6 +34,10 @@ try {
     $response['body'] = 'subscribed!';
     exit(json_encode($response));
 } catch (Exception $e) {
-    $response['body'] = 'error when handling the request';
+    // $e = json_encode($e);
+    $msg = $e->getMessage();
+    $pattern = '/"message"\:"(.*?)"/';
+    preg_match($pattern, $msg, $match);
+    $response['body'] = $match ? $match[1] : 'error when handling the request';
     exit(json_encode($response));
 }
