@@ -131,7 +131,7 @@ if($temp && count($temp) && $subscribe_item = $oo->get(end($temp))) {
             {
                 bottom: var(--padding);
                 left: var(--padding);
-                
+                z-index: 1100;
             }
             #subscribe-form {
                 position: relative;
@@ -177,7 +177,8 @@ if($temp && count($temp) && $subscribe_item = $oo->get(end($temp))) {
                 display: none;
             }
             [data-is-empty="true"] ~ button {
-                display: none
+                opacity: 0;
+                pointer-events: none;
             }
             .mailinglist-submit
             {
@@ -191,6 +192,8 @@ if($temp && count($temp) && $subscribe_item = $oo->get(end($temp))) {
                 background-size: 100%;
                 cursor: pointer;
                 vertical-align: middle;
+                opacity: 1;
+                pointer-events: auto;
             }
             #subscribe-messages {
                 padding: 2px 5px;

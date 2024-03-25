@@ -5,8 +5,8 @@
 }
 :root {
     --padding: 1em;
-    --font-animation: none;
-    --arrow-animation: none;
+    --font-animation: looping_font .5s infinite alternate-reverse;
+    --arrow-animation: stroke_width_variation .5s infinite alternate-reverse;
 }
 html {
     font-size: 21px;
@@ -22,10 +22,26 @@ body {
 	-webkit-text-size-adjust: 100%;
 
 }
-body[animation-version="1"] {
-    --font-animation: looping_font .5s infinite alternate-reverse;
-    --arrow-animation: stroke_width_variation .5s infinite alternate-reverse;
+/* animation queries */
+/* none */
+body[animation-version="none"] {
+    --font-animation: none;
+    --arrow-animation: none;
 }
+/* 0 */
+body[animation-version="0"] *[data-animation="font"] {
+    animation: var(--font-animation);
+}
+body[animation-version="0"] #menu-toggle .st0 {
+    animation: var(--arrow-animation);
+}
+body[animation-version="1"] {
+    /* --font-animation: none; */
+    /* --arrow-animation: none; */
+}
+
+
+
 body.night
 {
     background-color: #000;
@@ -46,7 +62,7 @@ img, video {
   	/* filter: grayscale(100%); */
 }
 
-img:hover, 
+img:hover,
 video:hover {
   	/* filter: initial; */
 }
@@ -55,10 +71,10 @@ canvas {
     /* border: 5px solid red; */
 }
 
-a:link,
-a:visited {
+a {
     color: #000;
     text-decoration: none;
+    border-bottom: 2px solid;
 }
 
 a:hover {
@@ -103,7 +119,9 @@ blockquote {
 
 #main {
 }
-
+.viewing-menu #main {
+    display: none;
+}
 #badge-container {
 	position: fixed;
 	right: 0px;

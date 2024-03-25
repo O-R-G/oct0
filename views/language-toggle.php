@@ -44,6 +44,7 @@ echo $html;
 .language-button {
     /* display: inline-block; */
     padding: 2px 5px;
+    border-bottom: 2px solid transparent;
 }
 .language-button.active, 
 .language-button:hover {

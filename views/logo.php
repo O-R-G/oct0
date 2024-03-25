@@ -19,18 +19,18 @@
             padding: 20px;
             z-index: 1000;
             white-space: nowrap;
+
         }
         .viewing-menu #logo {
-            opacity: 0.25;
+            /* opacity: 0.25; */
             pointer-events: none;
         }
-        #main-title {
+        #logo a {
+            border-bottom: none;
+        }
+        /* #main-title {
             font-size: 2.0em;
             border-radius: 50%;
-        }
-
-        #logo-numeral a {
-            margin-left: 10px;
         }
 
         .octo-box {
@@ -51,9 +51,6 @@
             text-align: center;
             transform: translate(-50%, -50%);
             border-radius: 50%;
-            /* border: 1px solid #00F; */
-            /* background-color: #CCC; */
-            /* background-color: #FF0; */
         }
 
         .octo-arm a,
@@ -98,26 +95,8 @@
 
         .octo-arm:nth-child(2) {
             transform: translate(-50%, -50%) rotate(315deg) translate(calc(var(--octo-box-size)/2.5));
-        }
+        } */
 
-
-        /*
-        .active:hover {
-            border-bottom: 3px solid #000;
-        }
-
-        .active a:hover {
-            border-bottom: 3px solid #000;
-        }
-        */
-
-        .static {
-            border-bottom: 6px solid #000;
-        }
-
-        .octo-arm .static {
-            border-bottom: none;
-        }
 
 
         @media screen and (max-width: 768px) {
@@ -130,7 +109,12 @@
                 border-bottom: 4px solid #000;
             }
         }
+        @media screen and (max-width: 768px) {
+            .viewing-menu #logo {
+                display: none;
+            }
+        }
     </style>
     <div id="logo" class="centre fixed">
-        <a class="active" href='/<?php echo $current_language; ?>'>OCT 0</a>
+        <a class="active prevent-font-animation" href='/<?php echo $current_language; ?>'>OCT0</a>
     </div>
