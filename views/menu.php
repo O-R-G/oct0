@@ -1,7 +1,8 @@
 <?php 
 $temp = $oo->urls_to_ids(array($current_language));
 $language_id = end($temp);
-$nav = $oo->nav_full_tree($language_id);
+// $nav = $oo->nav_full_tree($language_id);
+$nav = $oo->nav(array(), $language_id);
 
 ?>
 <div id="menu-toggle" class="fixed" onclick="toggle_menu()">

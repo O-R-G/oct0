@@ -16,7 +16,7 @@
         #logo {
             font-size: 3rem; 
             font-family: mtdbt2f4d-88, Helvetica, Arial, sans-serif;
-            padding: 20px;
+            /* padding: 20px; */
             z-index: 1000;
             white-space: nowrap;
 
@@ -116,5 +116,5 @@
         }
     </style>
     <div id="logo" class="centre fixed">
-        <a class="active prevent-font-animation" href='/<?php echo $current_language; ?>'>OCT0</a>
+        <h1><a class="active prevent-font-animation" href='/<?php echo $current_language; ?>'>OCT0</a></h1>
     </div>

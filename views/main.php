@@ -8,10 +8,10 @@ $notes = isset($item['notes']) ? $item['notes'] : '';
 // $body = wrap_accents($body);
 // $notes = wrap_accents($notes);
 
-?><section id="main">
+?><main id="main">
     <div id='content' class="">
         <?php echo $body; ?>
     </div>
-</section>
+</main>
 <style>
 </style>
