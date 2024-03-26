@@ -3,7 +3,8 @@ $temp = $oo->urls_to_ids(array($current_language));
 $language_id = end($temp);
 // $nav = $oo->nav_full_tree($language_id);
 $nav = $oo->nav(array(), $language_id);
-
+// $tree = $oo->traverse($language_id);
+// $nav = $oo->nav_full($tree);
 ?>
 <div id="menu-toggle" class="fixed" onclick="toggle_menu()">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
