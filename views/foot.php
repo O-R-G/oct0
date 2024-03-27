@@ -25,10 +25,12 @@
                         /* 
                           add animation attribute
                         */
+                        /*
                         let elements_to_animate = document.querySelectorAll('a:not(.prevent-font-animation), span.submenu-toggle:not(.prevent-font-animation)');
                         for(let el of elements_to_animate) {
                                 el.setAttribute('data-animation', 'font');
                         }
+                        */
                 }());
                 
         </script>
