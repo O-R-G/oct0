@@ -6,11 +6,11 @@ $params = array_merge($_GET);
 
 $languages = array(
     array(
-        'display' => 'FR',
+        'display' => 'fr',
         'slug'    => 'fr'
     ), 
     array(
-        'display' => 'EN',
+        'display' => 'en',
         'slug'    => 'en'
     )
 );
