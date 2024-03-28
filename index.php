@@ -20,9 +20,9 @@ else if($uri[1] == 'octopus-archive')
 {
     require_once("views/octopus-archive.php");
 }
-else if($uri[2] == 'now' && count($uri) < 5 ||
-        $uri[2] == 'archive' && count($uri) < 5 ||
-        $uri[2] == 'editions' && count($uri) < 5) {
+else if(isset($uri[2]) && $uri[2] == 'now' && count($uri) < 5 ||
+        isset($uri[2]) && $uri[2] == 'archive' && count($uri) < 5 ||
+        isset($uri[2]) && $uri[2] == 'editions' && count($uri) < 5) {
     require_once("views/archive.php");
 }
 else 
