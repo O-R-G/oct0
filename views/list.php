@@ -74,7 +74,6 @@ function sort_by_rank_then_begin_desc($a, $b){
     return $a['begin'] > $b['begin'] ? -1 : 1;
 }
 function sort_by_rank_then_begin_asc($a, $b){
-    /* if it happens in the past, sort by begin in a descending manner */
     if($a['rank'] !== $b['rank']) return $a['rank'] > $b['rank'] ? -1 : 1;
     if($a['begin'] == $b['begin']) return 0;
     return $a['begin'] > $b['begin'] ? 1 : -1;
@@ -98,9 +97,6 @@ else
     </section>
 </main>
 <style>
-#main {
-    /* padding-top: 3.5em; */
-}
 .list-wrapper {
     padding: 0.5em;
 }
