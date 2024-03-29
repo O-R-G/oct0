@@ -20,14 +20,18 @@ else if($uri[1] == 'octopus-archive')
 {
     require_once("views/octopus-archive.php");
 }
-else if(isset($uri[2]) && $uri[2] == 'now' && count($uri) < 5 ||
+else if(
+        // count($uri) == 2 || 
+        isset($uri[2]) && $uri[2] == 'now' && count($uri) < 5 ||
         isset($uri[2]) && $uri[2] == 'archive' && count($uri) < 5 ||
-        isset($uri[2]) && $uri[2] == 'editions' && count($uri) < 5) {
-    require_once("views/archive.php");
+        isset($uri[2]) && $uri[2] == 'editions' && count($uri) < 4) {
+    require_once("views/list.php");
 }
+else if(isset($uri[2]) && $uri[2] == 'sign-up')
+    require_once("views/subscribe.php");
 else 
     require_once("views/main.php");
-require_once("views/subscribe.php");
-// require_once("views/badge.php");
+
+require_once("views/subscribe-icon.php");
 require_once("views/foot.php");
 ?>

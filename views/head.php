@@ -47,6 +47,13 @@ else
 $default_language = getenv('DEFAULT_LANG') ? getenv('DEFAULT_LANG') : 'fr';
 $current_language = $uri[1] ? $uri[1] : $default_language;
 $animation_version = isset($_GET['animation']) ? $_GET['animation'] : 0;
+
+// if(count($uri) == 2) {
+// 	$temp = $oo->urls_to_ids(array($current_language, 'now'));
+// 	$now_id = end($temp);
+// 	$item = $oo->get($now_id);
+// }
+
 ?><!DOCTYPE html>
 <html>
 	<head>
@@ -79,5 +86,5 @@ $animation_version = isset($_GET['animation']) ? $_GET['animation'] : 0;
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-66/mtdbt2f4d-66-webfont.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.woff2" as="font" type="font/woff2" crossorigin>
 	</head>
-	<body current-lang = '<?php echo $current_language; ?>' animation-version='<?php echo $animation_version; ?>'>
+	<body octo-lang = '<?php echo $current_language; ?>' animation-version='<?php echo $animation_version; ?>'>
 

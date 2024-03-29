@@ -1,10 +1,13 @@
 <?
+$show_submenu = isset($uri[2]) && in_array($uri[2], array('now', 'archive')) ? 1 : 0;
+$submenu_depth = $show_submenu == 0 ? false : 2;
+
 $temp = $oo->urls_to_ids(array($current_language));
-$root_id = end($temp);
-$menu_ids = count($uu->ids) > 2 ? array_slice($uu->ids, 0, 2) : $uu->ids;
-// var_dump($menu_ids);
-$nav = $oo->nav($menu_ids, $root_id);
-// $nav = $oo->nav(array(), $root_id);
+$menu_root_id = end($temp);
+$menu_ids = ! $submenu_depth ? array() : ( count($uu->ids) > $submenu_depth ? array_slice($uu->ids, 0, $submenu_depth) : $uu->ids );
+$nav = $oo->nav($menu_ids, $menu_root_id);
+
+
 ?>
 <div id="menu-toggle" class="fixed" onclick="toggle_menu()">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -16,22 +19,26 @@ $nav = $oo->nav($menu_ids, $root_id);
     <line class="st0" x1="30.8" y1="75.1" x2="120" y2="75.1"/>
     </svg>
 </div>
-<header id="menu" class="">
+<header id="menu" class="" show-submenu="<?php echo $show_submenu; ?>">
     <ul class="nav-level"><?
         if(!empty($nav)) {
             $prevd = $nav[0]['depth'];
             foreach($nav as $n) {
                 $d = $n['depth'];
                 if($d > $prevd) {
-                    ?><ul class="submenu-wrapper nav-level"><li><?
-                        if(count($uri) > 3) {
-                            ?><a href="<?php echo implode('/', array_slice($uri, 0, 3)); ?>">
+                    if($submenu_depth && $d === $submenu_depth) {
+                        ?><ul class="submenu-wrapper nav-level"><li><?
+                        if(count($uu->ids) > $submenu_depth) {
+                            ?><a id="submenu-all" href="<?php echo implode('/', array_slice($uri, 0, $submenu_depth + 1)); ?>">
                                 All
                             </a><?
                         } else {
                             ?><span>All</span><?
                         } ?>
-                    </li><?
+                        </li><?
+                    } else if ($d < $submenu_depth) {
+                        ?><ul class="nav-level"><?
+                    }
                 } else {
                     for($i = 0; $i < $prevd - $d; $i++) {
                         ?></ul><?
@@ -51,36 +58,20 @@ $nav = $oo->nav($menu_ids, $root_id);
         }
     ?></ul>
 </header>
-<script>
-    function toggle_submenu(target){
-        let li = target.parentNode;
-        // let next_sibling = li.nextElementSibling;
-        // if(!next_sibling.tagName) return;
-        li.classList.toggle('expanded');
-        
-    }
-</script>
 <style>
 #menu {
-    /* display: none; */
-    padding: var(--padding);
-    /* padding-bottom: 60px;
-    z-index:1000;
-    width: 50vw;
-    left: 0;
-    top: 0;
-    position: fixed;
-    overflow: scroll;
-    background-color: #fff; */
+    padding: 0;
 }
 #menu > .nav-level > li {
     display: none;
+}
+.viewing-menu #menu {
+    padding: var(--padding);
 }
 .viewing-menu #menu > .nav-level > li {
     display: block;
 }
 .viewing-menu #menu .submenu-wrapper {
-    /* hide submenu when  */
     display: none;
 }
 .nav-level > .nav-level > .nav-level {
@@ -102,27 +93,14 @@ $nav = $oo->nav($menu_ids, $root_id);
     width: 100%;
 }
 #menu-toggle:hover .st0 {
-    /* stroke-width:12; */
     animation: var(--arrow-animation);
 }
 .viewing-menu #menu-toggle {
     transform: rotate(630deg);
 
 }
-.nav-level {
-    /* display: none; */
-}
-.expanded + .nav-level{
-    display: block;
-}
-
-/* .submenu-toggle {
-    cursor: pointer;
-} */
 #menu li > a
 {
-    /* float: left; */
-    /* border-bottom: none; */
     border-bottom: 2px solid transparent;
 }
 #menu li > span {
@@ -135,18 +113,15 @@ $nav = $oo->nav($menu_ids, $root_id);
 {
     border-bottom: 2px solid #000;
 }
-/* #menu li + li,
-#menu li + ul,
-#menu ul + li {
-    margin-top: 5px;
-} */
-/* #menu li:after {
-    content: '';
+
+/* submenu */
+
+#menu[show-submenu="1"] .expanded + .nav-level{
     display: block;
-    clear: both;
-    height: 0;
-} */
-.submenu-wrapper {
+}
+
+
+#menu[show-submenu="1"] .submenu-wrapper {
     padding: 1em;
     position: fixed;
     top: 0;
@@ -155,22 +130,18 @@ $nav = $oo->nav($menu_ids, $root_id);
     width: 100vw;
     max-width: 100%;
 }
-.submenu-wrapper > li {
+#menu[show-submenu="1"] .submenu-wrapper > li {
     display: inline-block;
     border-color: transparent;
 }
-.submenu-wrapper > li:hover, 
-.submenu-wrapper > li.active {
+#menu[show-submenu="1"] .submenu-wrapper > li:hover, 
+#menu[show-submenu="1"] .submenu-wrapper > li.active {
     border-color: #000;
 }
-.submenu-wrapper > li + li{
-    /* margin-top: 5px; */
+#menu[show-submenu="1"] .submenu-wrapper > li + li{
     margin-left: 1em;
 }
-
-@media screen and (max-width: 500px) {
-    #menu {
-        width: 100vw;
-    }
+#menu[show-submenu="1"] ~ #main {
+    padding-top: 2.5em;
 }
 </style>

@@ -17,14 +17,14 @@ function render_filter_item($o, $class=array(), $url_base = '', $active_slug='')
     $output = '<a class="'.$class.'" data-filter-slug="'.$filter_slug.'" href="'.$url_base . '/' . $o['url'].'">' . $o['name1'] . '</a>';
     return $output;
 }
-function render_list_item($o, $class=array(), $url_base = ''){
+function render_list_item($o, $class=array(), $url = ''){
     global $oo;
     $output = '';
     $class[] = 'list-item';
     $class = implode(' ', $class);
     // var_dump($oo->media($o['id']));
     $thumbnail = !empty($oo->media($o['id'])) ? '<div class="list-item-thumbnail-wrapper"><img class="list-item-thumbnail" src="' . m_url($oo->media($o['id'])[0]) . '" /></div>' : '';
-    $output .= '<a class="'.$class.'" href="'.$url_base . '/' . $o['url'].'">' . $thumbnail . '<h2 class="list-item-title">' . $o['name1'] . '</h2></a>';
+    $output .= '<a class="'.$class.'" href="'.$url.'">' . $thumbnail . '<h2 class="list-item-title">' . $o['name1'] . '</h2></a>';
     return $output;
 }
 function render_list($items, $id, $class=array(), $url_base = ''){

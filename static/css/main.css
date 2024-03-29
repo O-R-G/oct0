@@ -37,9 +37,8 @@ body[animation-version="0"] *[data-animation="font"] {
 body[animation-version="0"] #menu-toggle .st0 {
     animation: var(--arrow-animation);
 }
-body[animation-version="1"] {
-    /* --font-animation: none; */
-    /* --arrow-animation: none; */
+body[octo-lang="fr"] {
+    font-family: mtdbt2f4d-66, Helvetica, Arial, sans-serif;
 }
 
 
@@ -120,10 +119,6 @@ blockquote {
 
 /* ids */
 
-#menu {
-	padding-bottom: 1em;
-}
-
 #main {
     padding: var(--padding);
     padding-bottom: 60px;
@@ -179,10 +174,10 @@ blockquote {
 }
 
 /* use margin instead of <br> */
-#columns div,
+/* #columns div,
 #content div {
     margin-bottom: 22px;
-}
+} */
 
 /* #columns #en a {
     border-bottom: 2px solid #000;
@@ -199,8 +194,8 @@ blockquote {
     vertical-align: top;
     /* background-color: #FF0; */
 }
-[current-lang="en"] .fr,
-[current-lang="fr"] .en{
+[octo-lang="en"] .fr,
+[octo-lang="fr"] .en{
     display: none;
 }
 #notes {
