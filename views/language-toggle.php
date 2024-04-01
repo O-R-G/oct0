@@ -17,7 +17,7 @@ $languages = array(
 
 $html = '';
 $uri_without_lang = array_slice($uri, 2);
-$uri_without_lang = '/' . implode('/', $uri_without_lang);
+$uri_without_lang = empty($uri_without_lang) || !$uri_without_lang[0] ? '' : '/' . implode('/', $uri_without_lang);
 foreach($languages as $key => $lang) {
     $url = '/' . $lang['slug'] . $uri_without_lang;
     if(!empty($params)) $url .= '?' . implode('&', $params);

@@ -9,8 +9,9 @@ require_once("views/language-toggle.php");
 require_once("views/menu-simple.php");
 require_once("views/logo.php");
 
-
-if ($uri[1] == 'shop'){
+if(count($uri) == 2) {
+    require_once('views/home.php');
+} else if ($uri[1] == 'shop'){
     if(count($uri) <= 2)
         require_once("views/shop-list.php");   
     else
