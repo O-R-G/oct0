@@ -3,6 +3,11 @@ $request = $_SERVER['REQUEST_URI'];
 $requestclean = strtok($request,"?");
 $uri = explode('/', $requestclean);
 
+if(!$uri[1]) {
+    header('Location: /en/now');
+    exit();
+}
+
 require_once("views/head.php");
 require_once("views/language-toggle.php");
 // require_once("views/menu.php");
