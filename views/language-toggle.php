@@ -32,7 +32,7 @@ echo $html;
 #language-toggle {
     position: fixed;
     right: var(--padding);
-    bottom: var(--padding);
+    top: var(--padding);
     z-index: 1100;
 }
 #language-toggle:after {

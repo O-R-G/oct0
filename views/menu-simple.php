@@ -67,6 +67,7 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 }
 .viewing-menu #menu {
     padding: var(--padding);
+    padding-top: 75px;
 }
 .viewing-menu #menu > .nav-level > li {
     display: block;
@@ -80,7 +81,7 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 }
 #menu-toggle {
     top: calc( var(--padding) - 5px);
-    right: calc( var(--padding) - 5px);
+    left: calc( var(--padding) - 5px);
     width: 48px;
     height: 48px;
     cursor: pointer;
