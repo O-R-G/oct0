@@ -34,6 +34,10 @@
         z-index: 10000;    
     }
 
+    button {
+	display: none;
+    }
+
     #speedup {
         position: fixed;
         top: 70px;
