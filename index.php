@@ -1,4 +1,6 @@
 <?
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 $request = $_SERVER['REQUEST_URI'];
 $requestclean = strtok($request,"?");
 $uri = explode('/', $requestclean);
@@ -12,6 +14,7 @@ require_once("views/head.php");
 require_once("views/language-toggle.php");
 // require_once("views/menu.php");
 require_once("views/menu-simple.php");
+require_once("views/o.php");
 // require_once("views/logo.php");
 
 if(count($uri) == 2) {
