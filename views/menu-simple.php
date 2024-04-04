@@ -126,7 +126,7 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
     padding: 1em;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 50px;
     z-index: 900;
     width: 100vw;
     max-width: 100%;
