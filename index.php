@@ -5,19 +5,23 @@ $request = $_SERVER['REQUEST_URI'];
 $requestclean = strtok($request,"?");
 $uri = explode('/', $requestclean);
 
+/*
 if(!$uri[1]) {
     header('Location: /en/now');
     exit();
 }
+*/
 
 require_once("views/head.php");
 require_once("views/language-toggle.php");
 // require_once("views/menu.php");
 require_once("views/menu-simple.php");
 require_once("views/o.php");
+// require_once("views/badge.php");
 // require_once("views/logo.php");
 
-if(count($uri) == 2) {
+// ** clean up this logic !! **     
+if(count($uri) == 1) {
     require_once('views/home.php');
 } else if ($uri[1] == 'shop'){
     if(count($uri) <= 2)
