@@ -36,6 +36,8 @@ if(!$uu->id) {
     }
 }
 ?>
-
+<script>
+    let badge_ = document.getElementById('badge');
+</script>
 <!-- <script type='text/javascript' src='/static/js/global.js'></script> -->
 <script type='text/javascript' src='/static/js/menu.js'></script>

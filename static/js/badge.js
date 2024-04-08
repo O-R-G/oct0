@@ -72,7 +72,8 @@ class Badge {
         this.step = 2.0 * Math.PI / this.frames;
         this.delay = 10; 
         this.direction = 1;
-        this.animate();
+        // this.animate();
+        this.animate_center();
     }
 
     animate(self) {
@@ -95,13 +96,34 @@ class Badge {
         self.column++;
         self.t = setTimeout(()=>self.animate(self), self.delay);
     }
+    animate_center(self) {
+        if(!self)
+            self = this;
+        self.context.clearRect(0, 0, self.canvas.width, self.canvas.height);
+        self.sx = self.sprite_width * (self.column % self.sprite_sheet_columns);
+        if (self.sx == 0)
+            self.row++;
+        self.sy = self.sprite_height * (self.row % self.sprite_sheet_rows);
+        self.context.drawImage( self.sprite_sheet, 
+                                self.sx - self.sprite_width / 4,
+                                self.sy,
+                                self.sprite_width, 
+                                self.sprite_height, 
+                                self.sprite_X, 
+                                self.sprite_Y, 
+                                self.sprite_computed_width, 
+                                self.sprite_computed_height);
+        self.column++;
+        self.t = setTimeout(()=>self.animate_center(self), self.delay);
+    }
 
     start_stop() {
         if (this.t) {
             clearTimeout(this.t);
             this.t = null;
         } else {
-            setTimeout(this.animate(), this.delay);
+            // this.t = setTimeout(this.animate(), this.delay);
+            this.t = setTimeout(this.animate_center(), this.delay);
         }
     }
 }        

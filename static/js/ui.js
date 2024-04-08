@@ -17,12 +17,7 @@ function set_full_height() {
     }
 }
 set_full_height();
-// window.addEventListener('DOMContentLoaded', set_full_height);
+
 window.addEventListener('resize', set_full_height);
-
-function toggle_menu(){
-    document.body.classList.toggle('viewing-menu');
-}
-
 
 console.log('** ui ready **');

@@ -106,7 +106,7 @@ ul {
 	margin: 0px;
 }
 
-ul:first-child {
+ul:first-of-type {
 	padding-left: 0px;
 }
 

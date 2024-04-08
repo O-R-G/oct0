@@ -9,17 +9,18 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 
 
 ?>
-<div id="menu-toggle" class="fixed" onclick="toggle_menu()">
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;" xml:space="preserve">
-    <style type="text/css">
-        .st0{fill:none;stroke:#000000;stroke-width:9;stroke-miterlimit:10;}
-    </style>
-    <polyline class="st0" points="70.8,35.1 30.8,75.1 70.8,115.3 "/>
-    <line class="st0" x1="30.8" y1="75.1" x2="120" y2="75.1"/>
-    </svg>
-</div>
-<header id="menu" class="" show-submenu="<?php echo $show_submenu; ?>">
+
+<header id="menu" class="hidden" show-submenu="<?php echo $show_submenu; ?>">
+    <div id="menu-toggle" class="fixed" onclick="hide_show_menu()">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;" xml:space="preserve">
+        <style type="text/css">
+            .st0{fill:none;stroke:#000000;stroke-width:9;stroke-miterlimit:10;}
+        </style>
+        <polyline class="st0" points="70.8,35.1 30.8,75.1 70.8,115.3 "/>
+        <line class="st0" x1="30.8" y1="75.1" x2="120" y2="75.1"/>
+        </svg>
+    </div>
     <ul class="nav-level"><?
         if(!empty($nav)) {
             $prevd = $nav[0]['depth'];
@@ -59,21 +60,22 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
     ?></ul>
 </header>
 <style>
-#menu {
+#menu.hidden {
     padding: 0;
+    display: block;
 }
-#menu > .nav-level > li {
+#menu.hidden > .nav-level > li {
     display: none;
 }
-.viewing-menu #menu {
+#menu {
     padding: var(--padding);
     padding-top: 75px;
 }
-.viewing-menu #menu > .nav-level > li {
-    display: block;
-}
-.viewing-menu #menu .submenu-wrapper {
+#menu .submenu-wrapper {
     display: none;
+}
+#menu.hidden .submenu-wrapper {
+    display: block;
 }
 .nav-level > .nav-level > .nav-level {
     /* hide nav items deeper than "submenu" if any */
@@ -96,9 +98,11 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 #menu-toggle:hover .st0 {
     animation: var(--arrow-animation);
 }
-.viewing-menu #menu-toggle {
+#menu-toggle {
     transform: rotate(630deg);
-
+}
+.hidden #menu-toggle {
+    transform: rotate(0);
 }
 #menu li > a
 {
@@ -123,10 +127,10 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 
 
 #menu[show-submenu="1"] .submenu-wrapper {
-    padding: 1em;
+    padding: var(--padding);
+    padding-left: calc(4 * var(--padding));
     position: fixed;
     top: 0;
-    left: 50px;
     z-index: 900;
     width: 100vw;
     max-width: 100%;

@@ -98,7 +98,7 @@ else
 </main>
 <style>
 .list-wrapper {
-    padding: 0.5em;
+    padding: calc(var(--padding) / 2);
 }
 .list-item {
     display: inline-block;
