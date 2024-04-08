@@ -16,8 +16,8 @@ require_once("views/head.php");
 require_once("views/language-toggle.php");
 // require_once("views/menu.php");
 require_once("views/menu-simple.php");
-require_once("views/o.php");
-// require_once("views/badge.php");
+// require_once("views/o.php");
+require_once("views/badge.php");
 // require_once("views/logo.php");
 
 // ** clean up this logic !! **     
