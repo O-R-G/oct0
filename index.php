@@ -45,8 +45,8 @@ else if(isset($uri[2]) && $uri[2] == 'sign-up')
 else 
     require_once("views/main.php");
 
-require_once("views/badge.php");
-// require_once("views/badge-menu.php");
+// require_once("views/badge.php");
+require_once("views/badge-menu.php");
 // require_once("views/o.php");
 require_once("views/subscribe-icon.php");
 require_once("views/foot.php");
