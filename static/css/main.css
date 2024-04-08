@@ -123,9 +123,7 @@ blockquote {
     padding: var(--padding);
     padding-bottom: 60px;
 }
-.viewing-menu #main {
-    display: none;
-}
+
 #badge-container {
 	position: fixed;
 	right: 0px;
