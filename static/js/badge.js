@@ -19,7 +19,8 @@ class Badge {
             centerY,
             radius,
             direction;
-        var counter;
+        var column, 
+            row;
         var sprite_sheet,
             sprite_width,
             sprite_height,
@@ -66,9 +67,10 @@ class Badge {
         this.sprite_sheet_rows = 36;
         this.frames = this.sprite_sheet_columns * this.sprite_sheet_rows;    // frames in sprite_sheet
 
-        this.counter = 0;
+        this.column = 0;
+        this.row = 0;
         this.step = 2.0 * Math.PI / this.frames;
-        this.delay = 100; 
+        this.delay = 10; 
         this.direction = 1;
         this.animate();
     }
@@ -77,14 +79,20 @@ class Badge {
         if(!self)
             self = this;
         self.context.clearRect(0, 0, self.canvas.width, self.canvas.height);
-
-        // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-        // context.drawImage(sprite_sheet, sprite_width * (counter % frames), 0, 480, 253, topX, topY, 480, 253);
-        // context.drawImage(sprite_sheet, sprite_width * (counter % frames), 0, sprite_width, sprite_height, sprite_X, sprite_Y, sprite_computed_width, sprite_computed_height);
-        self.context.drawImage(self.sprite_sheet, self.sprite_width * (self.counter % self.sprite_sheet_columns), self.sprite_height * (self.counter % self.sprite_sheet_rows), self.sprite_width, self.sprite_height, self.sprite_X, self.sprite_Y, self.sprite_computed_width, self.sprite_computed_height);
-
-        self.counter++;
-        // var thisStep = (self.counter % self.frames) * self.step * self.direction;
+        self.sx = self.sprite_width * (self.column % self.sprite_sheet_columns);
+        if (self.sx == 0)
+            self.row++;
+        self.sy = self.sprite_height * (self.row % self.sprite_sheet_rows);
+        self.context.drawImage( self.sprite_sheet, 
+                                self.sx,
+                                self.sy,
+                                self.sprite_width, 
+                                self.sprite_height, 
+                                self.sprite_X, 
+                                self.sprite_Y, 
+                                self.sprite_computed_width, 
+                                self.sprite_computed_height);
+        self.column++;
         self.t = setTimeout(()=>self.animate(self), self.delay);
     }
 
