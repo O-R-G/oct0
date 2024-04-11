@@ -69,7 +69,7 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 }
 #menu {
     padding: var(--padding);
-    padding-top: 75px;
+    /* padding-top: 75px; */
 }
 #menu .submenu-wrapper {
     display: none;
@@ -90,6 +90,7 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
     z-index: 1100;
     transition: transform .5s;
     transition-timing-function: steps(8, end);
+    display: none;
 }
 #menu-toggle > img {
     display: block;
@@ -128,7 +129,7 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 
 #menu[show-submenu="1"] .submenu-wrapper {
     padding: var(--padding);
-    padding-left: calc(4 * var(--padding));
+    /* padding-left: calc(4 * var(--padding)); */
     position: fixed;
     top: 0;
     z-index: 900;
