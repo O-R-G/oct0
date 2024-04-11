@@ -72,8 +72,8 @@ class Badge {
         this.step = 2.0 * Math.PI / this.frames;
         this.delay = 10; 
         this.direction = 1;
-        // this.animate();
-        this.animate_center();
+        this.animate();
+        // this.animate_center();
     }
 
     animate(self) {
@@ -123,7 +123,7 @@ class Badge {
             this.t = null;
         } else {
             // this.t = setTimeout(this.animate(), this.delay);
-            this.t = setTimeout(this.animate_center(), this.delay);
+            this.t = setTimeout(this.animate(), this.delay);
         }
     }
 }        
