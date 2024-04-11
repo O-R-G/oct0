@@ -129,6 +129,8 @@ blockquote {
 	right: 0px;
 	width: 100%;
     padding: 10px;
+    mix-blend-mode: multiply;
+    z-index: 10000;
 }
 
 #badge {

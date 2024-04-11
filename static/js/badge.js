@@ -54,7 +54,7 @@ class Badge {
         this.sprite_sheet.src = '/media/png/sprite-sheet.png';
         this.sprite_height = 204;                               // right now only showing column of sprite sheet
                                                                 // change to = 244 to verify
-        this.sprite_width = 408;
+        this.sprite_width = 204;
         this.sprite_computed_width = this.context.canvas.width;
 
                                                                 // not sure what is correct here
