@@ -130,7 +130,7 @@ blockquote {
 	width: 100%;
     padding: 10px;
     mix-blend-mode: multiply;
-    z-index: 10000;
+    z-index: 900;
 }
 
 #badge {

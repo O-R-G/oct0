@@ -4,6 +4,7 @@
         left: var(--padding);
         bottom: var(--padding);
         width: 30px;
+        z-index: 1000;
     }
     #subscribe-icon img {
         display: block;

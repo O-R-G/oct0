@@ -16,10 +16,11 @@ $languages = array(
 );
 
 $html = '';
-$uri_without_lang = array_slice($uri, 2);
-$uri_without_lang = empty($uri_without_lang) || !$uri_without_lang[0] ? '' : '/' . implode('/', $uri_without_lang);
+// $uri_without_lang = array_slice($uri, 2);
+// $uri_without_lang = empty($uri_without_lang) || !$uri_without_lang[0] ? '' : '/' . implode('/', $uri_without_lang);
 foreach($languages as $key => $lang) {
-    $url = '/' . $lang['slug'] . $uri_without_lang;
+    // $url = '/' . $lang['slug'] . $uri_without_lang;
+    $url = '/' . $lang['slug'];
     if(!empty($params)) $url .= '?' . implode('&', $params);
     $html .= '<a class="language-button' . ($lang['slug'] == $current_language ? ' active' : '') . '" href="'.$url . '">' . $lang['display'] . '</a>';
     $html .= $key == count($languages) - 1 ? '' : '<span class="language-button-divider">/</span>';
@@ -50,7 +51,7 @@ echo $html;
 .language-button:hover {
     border-bottom: 2px solid #000;
 }
-.language-button:hover {
+/* .language-button:hover {
     animation: var(--font-animation);
-}
+} */
 </style>

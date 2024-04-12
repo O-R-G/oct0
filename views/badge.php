@@ -8,7 +8,7 @@
 
 $badge = "<canvas id='clock-canvas' class='centre'>loading...</canvas>";
 
-if(!$uu->id) {
+if(!$uu->id || count($uri) == 2) {
     ?><div id='badge-container' class='centre'>
         <div id='badge' class='large badge'>
             <?= $badge; ?>

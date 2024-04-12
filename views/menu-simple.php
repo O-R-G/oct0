@@ -69,6 +69,9 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 }
 #menu {
     padding: var(--padding);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     /* padding-top: 75px; */
 }
 #menu .submenu-wrapper {
@@ -129,25 +132,44 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 
 #menu[show-submenu="1"] .submenu-wrapper {
     padding: var(--padding);
-    /* padding-left: calc(4 * var(--padding)); */
-    position: fixed;
-    top: 0;
+    position: relative;
+    /* top: 0; */
     z-index: 900;
     width: 100vw;
     max-width: 100%;
+    padding-right: 100px;
 }
 #menu[show-submenu="1"] .submenu-wrapper > li {
     display: inline-block;
     border-color: transparent;
+    margin-right: 1em;
+}
+#menu[show-submenu="1"] .submenu-wrapper > li:last-child {
+    margin-right: 0;
 }
 #menu[show-submenu="1"] .submenu-wrapper > li:hover, 
 #menu[show-submenu="1"] .submenu-wrapper > li.active {
     border-color: #000;
 }
-#menu[show-submenu="1"] .submenu-wrapper > li + li{
+/* #menu[show-submenu="1"] .submenu-wrapper > li + li{
     margin-left: 1em;
-}
+} */
 #menu[show-submenu="1"] ~ #main {
-    padding-top: 2.5em;
+    /* padding-top: 2.5em; */
+}
+@media screen and (max-width: 500px ){
+    #menu[show-submenu="1"] .submenu-wrapper {
+        padding-right: 80px;
+    }
 }
 </style>
+<script>
+    let viewing_submenu = <?php echo json_encode($show_submenu); ?>;
+    if ( viewing_submenu == 1 ) {
+        let submenu = document.querySelector('.submenu-wrapper.nav-level');
+        let main = document.querySelector('main');
+        if (submenu) {
+            
+        }
+    }
+</script>
