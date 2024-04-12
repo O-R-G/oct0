@@ -21,9 +21,13 @@ function render_list_item($o, $class=array(), $url = ''){
     global $oo;
     $output = '';
     $class[] = 'list-item';
+    if(!empty($oo->media($o['id'])))
+        $thumbnail = '<div class="list-item-thumbnail-wrapper"><img class="list-item-thumbnail" src="' . m_url($oo->media($o['id'])[0]) . '" /></div>';
+    else {
+        $thumbnail = '';
+        $class[] = 'no-thumbnail';
+    }
     $class = implode(' ', $class);
-    // var_dump($oo->media($o['id']));
-    $thumbnail = !empty($oo->media($o['id'])) ? '<div class="list-item-thumbnail-wrapper"><img class="list-item-thumbnail" src="' . m_url($oo->media($o['id'])[0]) . '" /></div>' : '';
     $output .= '<a class="'.$class.'" href="'.$url.'">' . $thumbnail . '<h2 class="list-item-title">' . $o['name1'] . '</h2></a>';
     return $output;
 }

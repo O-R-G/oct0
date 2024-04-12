@@ -111,6 +111,9 @@ else
     position: relative;
     margin: 0.5em;
 }
+.list-item.no-thumbnail {
+    border: 1px solid;
+}
 .list-item-thumbnail-wrapper {
     height: 100%;
     position: relative;
@@ -136,7 +139,8 @@ else
     opacity: 0;
     text-align: center;
 }
-.list-item:hover .list-item-title{
+.list-item:hover .list-item-title,
+.list-item.no-thumbnail .list-item-title{
     opacity: 1;
 }
 .list-item:hover .list-item-thumbnail {
