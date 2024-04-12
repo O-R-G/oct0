@@ -73,6 +73,6 @@
 		httpRequest.open('GET', api_url);
 		httpRequest.send();
     }
-	requestIpinfo();
-	// requestWeather();
+	// requestIpinfo();
+	requestWeather();
 </script>
