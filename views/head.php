@@ -46,7 +46,7 @@ else
 
 $default_language = getenv('DEFAULT_LANG') ? getenv('DEFAULT_LANG') : 'fr';
 $current_language = $uri[1] ? $uri[1] : $default_language;
-$animation_version = isset($_GET['animation']) ? $_GET['animation'] : 0;
+$animation_version = isset($_GET['badge-animation']) ? $_GET['badge-animation'] : 0;
 
 // if(count($uri) == 2) {
 // 	$temp = $oo->urls_to_ids(array($current_language, 'now'));
@@ -77,14 +77,14 @@ $animation_version = isset($_GET['animation']) ? $_GET['animation'] : 0;
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 		<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 		<script type='text/javascript' src='/static/js/loop.js'></script>
-		<link rel="preload" href="/static/fonts/mtdbt2f4d-0/mtdbt2f4d-0-webfont.woff2" as="font" type="font/woff2" crossorigin>
+		<!-- <link rel="preload" href="/static/fonts/mtdbt2f4d-0/mtdbt2f4d-0-webfont.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-1/mtdbt2f4d-1-webfont.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-2/mtdbt2f4d-2-webfont.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-3/mtdbt2f4d-3-webfont.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-4/mtdbt2f4d-4-webfont.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-5/mtdbt2f4d-5-webfont.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/static/fonts/mtdbt2f4d-66/mtdbt2f4d-66-webfont.woff2" as="font" type="font/woff2" crossorigin>
-		<link rel="preload" href="/static/fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/static/fonts/mtdbt2f4d-88/mtdbt2f4d-88-webfont.woff2" as="font" type="font/woff2" crossorigin> -->
 	</head>
-	<body octo-lang = '<?php echo $current_language; ?>' animation-version='<?php echo $animation_version; ?>'>
+	<body octo-lang = '<?php echo $current_language; ?>' badge-animation-version='<?php echo $animation_version; ?>'>
 

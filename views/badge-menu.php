@@ -14,7 +14,7 @@ if(!$uu->id || count($uri) == 2) {
             <?= $badge; ?>
         </div>
     </div>
-    <script>badge.init("clock-canvas", "centre", true);</script><?
+    <script>badge.init("clock-canvas", "centre", true, '<?php echo $animation_version; ?>');</script><?
 } else {
     if($show_menu) {
         ?><div id="badge-container" class="lower-right">
@@ -30,9 +30,9 @@ if(!$uu->id || count($uri) == 2) {
         </div><?
     }
     if($show_menu) {
-        ?><script>badge.init("clock-canvas", "lower-right", false);</script><?
+        ?><script>badge.init("clock-canvas", "lower-right", false, '<?php echo $animation_version; ?>');</script><?
     } else {
-        ?><script>badge.init("clock-canvas", "lower-right", true);</script><?
+        ?><script>badge.init("clock-canvas", "lower-right", true, '<?php echo $animation_version; ?>');</script><?
     }
 }
 ?>

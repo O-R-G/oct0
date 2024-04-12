@@ -25,18 +25,18 @@ body {
 }
 /* animation queries */
 /* none */
-body[animation-version="none"] {
+/* body[animation-version="none"] {
     --font-animation: none;
     --arrow-animation: none;
     --thumbnail-animation: none;
-}
+} */
 /* 0 */
-body[animation-version="0"] *[data-animation="font"] {
+/* body[animation-version="0"] *[data-animation="font"] {
     animation: var(--font-animation);
-}
-body[animation-version="0"] #menu-toggle .st0 {
+} */
+/* #menu-toggle .st0 {
     animation: var(--arrow-animation);
-}
+} */
 body[octo-lang="fr"] {
     font-family: mtdbt2f4d-66, Helvetica, Arial, sans-serif;
 }

@@ -32,7 +32,7 @@ class Badge {
             sprite_Y;
     }
 
-    init() {
+    init(canvas_id, position, viewing_menu, animation_version=0) {
         var badge = document.getElementById("badge");
         this.canvas = badge.getElementsByTagName("canvas")[0];
         this.context = this.canvas.getContext("2d");
@@ -72,10 +72,21 @@ class Badge {
         this.step = 2.0 * Math.PI / this.frames;
         this.delay = 10; 
         this.direction = 1;
-        this.animate();
+        this.animation_version = animation_version;
+        this.forward =true;
+        this.frame_count = 0;
+        this.current = 0;
+        this.temperature = false;
+            
+        this.animate_by_version();
         // this.animate_center();
     }
-
+    animate_by_version(){
+        if(this.animation_version == 1)
+            this.animate_1();
+        else
+            this.animate();
+    }
     animate(self) {
         if(!self)
             self = this;
@@ -94,36 +105,52 @@ class Badge {
                                 self.sprite_computed_width, 
                                 self.sprite_computed_height);
         self.column++;
-        self.t = setTimeout(()=>self.animate(self), self.delay);
+        self.t = setTimeout(()=>self.animate(), self.delay);
     }
-    animate_center(self) {
+    animate_1(self) {
         if(!self)
             self = this;
         self.context.clearRect(0, 0, self.canvas.width, self.canvas.height);
-        self.sx = self.sprite_width * (self.column % self.sprite_sheet_columns);
-        if (self.sx == 0)
-            self.row++;
-        self.sy = self.sprite_height * (self.row % self.sprite_sheet_rows);
+        let coord = self.get_nth_coordinates();
         self.context.drawImage( self.sprite_sheet, 
-                                self.sx - self.sprite_width / 4,
-                                self.sy,
+                                self.sprite_height * coord.x,
+                                self.sprite_width * coord.y,
                                 self.sprite_width, 
                                 self.sprite_height, 
                                 self.sprite_X, 
                                 self.sprite_Y, 
                                 self.sprite_computed_width, 
                                 self.sprite_computed_height);
-        self.column++;
-        self.t = setTimeout(()=>self.animate_center(self), self.delay);
-    }
+        self.frame_count++;
+        if( (self.forward && self.frame_count > 80) || (!self.forward && self.frame_count > 60) ) {
+            self.forward = !self.forward;
+            self.frame_count = 0;
+        }
 
+        self.current = self.forward ? self.current + 1 : self.current - 1;
+        self.t = setTimeout(()=>self.animate_1(self), self.delay);
+    }
+    get_nth_coordinates(){ 
+        this.current = this.current % (this.sprite_sheet_rows * this.sprite_sheet_columns);
+        let n = this.current;
+        let y = parseInt(n / this.sprite_sheet_columns);
+        let x = n % this.sprite_sheet_columns;
+        return { x: x, y: y};
+    }
+    set_temperature(t){
+        /* ideal temperature for common octopus: ~60F */
+        console.log(t);
+        let r = 1 + Math.abs((t - 60) / 10);
+
+        this.delay *= r;
+    }
     start_stop() {
         if (this.t) {
             clearTimeout(this.t);
             this.t = null;
         } else {
             // this.t = setTimeout(this.animate(), this.delay);
-            this.t = setTimeout(this.animate(), this.delay);
+            this.animate_by_version();
         }
     }
 }        
