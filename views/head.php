@@ -46,7 +46,7 @@ else
 
 $default_language = getenv('DEFAULT_LANG') ? getenv('DEFAULT_LANG') : 'fr';
 $current_language = $uri[1] ? $uri[1] : $default_language;
-$animation_version = isset($_GET['badge-animation']) ? $_GET['badge-animation'] : 0;
+$animation_version = isset($_GET['badge-animation']) ? $_GET['badge-animation'] : 1;
 
 // if(count($uri) == 2) {
 // 	$temp = $oo->urls_to_ids(array($current_language, 'now'));

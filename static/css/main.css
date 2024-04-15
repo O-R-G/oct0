@@ -122,6 +122,7 @@ blockquote {
 #main {
     padding: var(--padding);
     padding-bottom: 60px;
+    transition: opacity .25s;
 }
 
 #badge-container {
@@ -130,7 +131,7 @@ blockquote {
 	width: 100%;
     padding: 10px;
     mix-blend-mode: multiply;
-    z-index: 900;
+    z-index: 1100;
 }
 
 #badge {
@@ -328,7 +329,10 @@ blockquote {
 .hidden {
     display: none;
 }
-
+.transparent {
+    opacity: 0;
+    pointer-events: none;
+}
 .visible {
     display: block;
 }

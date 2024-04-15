@@ -63,22 +63,26 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 #menu.hidden {
     padding: 0;
     display: block;
+    height: auto;
+    background-color: transparent;
+    position: sticky;
 }
 #menu.hidden > .nav-level > li {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow:hidden;
+}
+.nav-level > li {
+    transition: opacity .5s;
 }
 #menu {
     padding: var(--padding);
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
-    /* padding-top: 75px; */
-}
-#menu .submenu-wrapper {
-    display: none;
-}
-#menu.hidden .submenu-wrapper {
-    display: block;
+    width: 100vw;
+    max-width: 100%;
 }
 .nav-level > .nav-level > .nav-level {
     /* hide nav items deeper than "submenu" if any */
@@ -131,14 +135,26 @@ $nav = $oo->nav($menu_ids, $menu_root_id);
 
 
 #menu[show-submenu="1"] .submenu-wrapper {
-    padding: var(--padding);
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
     position: relative;
-    /* top: 0; */
     z-index: 900;
     width: 100vw;
     max-width: 100%;
+    
+}
+
+#menu[show-submenu="1"].hidden .submenu-wrapper {
+    /* display: block; */
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+    padding: var(--padding);
     padding-right: 100px;
 }
+
 #menu[show-submenu="1"] .submenu-wrapper > li {
     display: inline-block;
     border-color: transparent;

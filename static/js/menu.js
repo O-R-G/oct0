@@ -9,8 +9,7 @@ if(typeof badge_ != 'undefined' && badge_)
     badge_.addEventListener('click', hide_show_menu);
 
 function hide_show_menu() {
-    console.log('hide_show_menu()');
     menu.classList.toggle("hidden");
-    main.classList.toggle("hidden");
+    main.classList.toggle("transparent");
     badge.start_stop();
 }
