@@ -131,7 +131,7 @@ blockquote {
 	width: 100%;
     padding: 10px;
     mix-blend-mode: multiply;
-    z-index: 1100;
+    z-index: 900;
 }
 
 #badge {

@@ -8,28 +8,28 @@
 class Badge {
 
     constructor (){
-        var canvas,
-            context,
-            step,
-            steps,
-            frames,
-            delay,
-            t;
-        var centerX,
-            centerY,
-            radius,
-            direction;
-        var column, 
-            row;
-        var sprite_sheet,
-            sprite_width,
-            sprite_height,
-            sprite_computed_width,
-            sprite_computed_height,
-            sprite_sheet_columns,
-            sprite_sheet_rows,
-            sprite_X,
-            sprite_Y;
+        // var canvas,
+        //     context,
+        //     step,
+        //     steps,
+        //     frames,
+        //     delay,
+        //     t;
+        // var centerX,
+        //     centerY,
+        //     radius,
+        //     direction;
+        // var column, 
+        //     row;
+        // var sprite_sheet,
+        //     sprite_width,
+        //     sprite_height,
+        //     sprite_computed_width,
+        //     sprite_computed_height,
+        //     sprite_sheet_columns,
+        //     sprite_sheet_rows,
+        //     sprite_X,
+        //     sprite_Y;
     }
 
     init(canvas_id, position, viewing_menu, animation_version=0) {
@@ -75,7 +75,7 @@ class Badge {
         this.animation_version = animation_version;
         this.forward =true;
         this.frame_count = 0;
-        this.current = 0;
+        this.current = Date.now() % (this.sprite_sheet_columns * this.sprite_sheet_rows);
         this.temperature = false;
             
         this.animate_by_version();
@@ -105,6 +105,7 @@ class Badge {
                                 self.sprite_computed_width, 
                                 self.sprite_computed_height);
         self.column++;
+        
         self.t = setTimeout(()=>self.animate(), self.delay);
     }
     animate_1(self) {
@@ -122,13 +123,15 @@ class Badge {
                                 self.sprite_computed_width, 
                                 self.sprite_computed_height);
         self.frame_count++;
-        if( (self.forward && self.frame_count > 80) || (!self.forward && self.frame_count > 60) ) {
+        if( (self.forward && self.frame_count > 100) || (!self.forward && self.frame_count > 80) ) {
             self.forward = !self.forward;
             self.frame_count = 0;
         }
-
+        // console.log(self.forward + ': ' +self.delay);
+        // if (!self.delay) console.log(self.frame_count);
+        // self.delay = self.forward ? parseFloat((self.delay / 0.97).toFixed(2)) : parseFloat((self.delay * 0.97).toFixed(2));
         self.current = self.forward ? self.current + 1 : self.current - 1;
-        self.t = setTimeout(()=>self.animate_1(self), self.delay);
+        self.t = setTimeout(()=>self.animate_1(), self.delay);
     }
     get_nth_coordinates(){ 
         this.current = this.current % (this.sprite_sheet_rows * this.sprite_sheet_columns);
