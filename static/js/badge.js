@@ -120,7 +120,7 @@ class Badge {
                                 self.sprite_height, 
                                 self.sprite_X, 
                                 self.sprite_Y, 
-                                self.sprite_computed_width, 
+                                self.sprite_cgitomputed_width, 
                                 self.sprite_computed_height);
         self.frame_count++;
         if( (self.forward && self.frame_count > 100) || (!self.forward && self.frame_count > 80) ) {
